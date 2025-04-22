@@ -11,7 +11,7 @@
     // Modifique el programa desarrollado en la Actividad 4 para almacenar los datos del array en una tabla en una base de datos MySQL.
 
     function connectDB() {
-        $connection = new mysqli("localhost", "root", "", "u2-a5");
+        $connection = mysqli_connect("localhost", "root", "", "u2-a5");
         if ($connection->connect_error) {
             die("Error de Conexión: ".$connection->connect_error);
         }

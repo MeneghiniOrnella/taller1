@@ -11,7 +11,7 @@
     // Modifique el programa desarrollado en la Actividad 5 para enviar un correo electrónico con la suma de todos los elementos del vector.
 
     function connectDB() {
-        $connection = new mysqli("localhost", "root", "", "u2-a5");
+        $connection = mysqli_connect("localhost", "root", "", "u2-a5");
         if ($connection->connect_error) {
             die("Error de Conexión: ".$connection->connect_error);
         }
