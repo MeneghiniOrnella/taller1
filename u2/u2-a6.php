@@ -1,27 +1,30 @@
-<?php
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>U2 A4</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 </head>
 <body>
     <h2>Tabla</h2>
     <?php
     // Modifique el programa desarrollado en la Actividad 5 para enviar un correo electrónico con la suma de todos los elementos del vector.
 
-    $conexion = new mysqli("localhost", "root", "", "u2-a5");
-    $conexion->query("
-        CREATE TABLE IF NOT EXISTS equipos (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            clave VARCHAR(30),
-            valor INT
-        )
-    ");
+    function connectDB() {
+        $connection = new mysqli("localhost", "root", "", "u2-a5");
+        if ($connection->connect_error) {
+            die("Error de Conexión: ".$connection->connect_error);
+        }
+        return $connection;
+    }
+
+    function createTable($connection) {
+        $connection->query("CREATE TABLE IF NOT EXISTS equipos (id INT AUTO_INCREMENT PRIMARY KEY, clave VARCHAR(30), valor INT)");
+    }
+
+    function deleteTable($connection) {
+        $connection->query("DELETE FROM equipos");
+    }
 
     function createTeams($size) {
         $equipos = [];
@@ -30,27 +33,25 @@
         }
         return $equipos;
     }
-    function insertIntoDB($conexion, $equipos) {
-        $conexion->query("DELETE FROM equipos");
-        $result = $conexion->prepare("
-            INSERT INTO equipos (clave, valor) VALUES (?, ?)
-        ");
+
+    function saveOnDB($connection, $equipos) {
+        $connection->query("DELETE FROM equipos");
         foreach($equipos as $clave => $valor) {
-            $result = bind_params("yes", $clave, $valor);
-            $result->execute();
+            $connection->query("INSERT INTO equipos (clave, valor) VALUES ('$clave', $valor)");
         }
-        $result->close();
     }
-    function createTable($equipos) {
+
+    function showTable($equipos) {
         foreach($equipos as $clave => $valor) {
             echo ("
-                <tr class='row'>
-                    <th class='col'>$clave</th>
-                    <th class='col'>$valor</th>
+                <tr>
+                    <th>$clave</th>
+                    <th>$valor</th>
                 </tr>
             ");
         }
     }
+
     function sumValues($equipos) {
         $sum = 0;
         foreach($equipos as $valor) {
@@ -58,18 +59,21 @@
         }
         return $sum;
     }
+
+    $connection = connectDB();
+    createTable($connection);
     $equipos = createTeams(4);
+    saveOnDB($connection, $equipos);
+
     ?>
-    <table class='container text-center'>
-        <tr class='row bg-info text-white'>
-            <th class='col'>Clave</th>
-            <th class='col'>Valor</th>
+    <table>
+        <tr>
+            <th>Clave</th>
+            <th>Valor</th>
         </tr>
-        <?php createTable($equipos); ?>
+        <?php showTable($equipos); ?>
     </table>
     <h2>Suma de valores</h2>
-    <b class="display-1 text-success fw-bold"><?php echo sumValues($equipos); ?></b>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <b><?php echo sumValues($equipos); ?></b>
 </body>
 </html>
