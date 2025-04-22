@@ -12,9 +12,6 @@
 
     function connectDB() {
         $connection = mysqli_connect("localhost", "root", "", "u2-a5");
-        if ($connection->connect_error) {
-            die("Error de Conexión: ".$connection->connect_error);
-        }
         return $connection;
     }
 
