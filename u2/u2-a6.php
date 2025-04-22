@@ -57,10 +57,19 @@
         return $sum;
     }
 
+    function sendEmail($sum) {
+        $destinatario = "meneghini.ornella@gmail.com";
+        $asunto = "Suma de valores de los equipos";
+        $mensaje = "La suma de los valores de los equipos es: $sum";
+        $cabeceras = "From: meneghini.ornella@gmail.com"."\r\n"."X-Mailer: PHP/".phpversion();
+        mail($destinatario, $asunto, $mensaje,$cabeceras);
+    }
+
     $connection = connectDB();
     createTable($connection);
     $equipos = createTeams(4);
     saveOnDB($connection, $equipos);
+    sendEmail(sumValues($equipos));
 
     ?>
     <table>
