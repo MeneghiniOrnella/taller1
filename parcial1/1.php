@@ -83,4 +83,3 @@ if (isset($_GET['array']) && isset($_GET['divisor']) && $_GET['array'] !== '' &&
 
 </body>
 </html>
-
