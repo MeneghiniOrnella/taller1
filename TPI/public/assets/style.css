@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* npx @tailwindcss/cli -i ./public/assets/style.css -o ./public/assets/output.css --watch
+ */
