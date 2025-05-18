@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<bod>
     <div class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -23,5 +23,10 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+    <div class="">
+        <button class="">x</button>
+        <div class="">
+            <p class=""><?php $textModal ?></p>
+            <button class="">Confirmar</button>
+        </div>
+    </div>

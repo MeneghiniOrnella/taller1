@@ -1,12 +1,12 @@
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Iabc</th>
+<table class="">
+    <thead class="">
+        <tr class="">
+            <th class=""><?php $titleColumn ?></th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td>abc</td>
+    <tbody class="">
+        <tr class="">
+            <td class=""><?php $infoColumn ?></td>
         </tr>
     </tbody>
 </table>
