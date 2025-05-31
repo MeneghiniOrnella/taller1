@@ -1,17 +1,23 @@
-<?php include('src/components/input.php');
-// <form action="src/logic/process_form.php" method="post">
-?>
+<?php include('src/components/input.php'); ?>
 
-<form action="" method="post">
+<form action="<?= $formData['action'] ?? '' ?>" method="<?= $formData['method'] ?? 'post' ?>">
     <?php
-        renderInput("nombre", "Nombre", "text", true);
-        renderInput("apellido", "Apellido", "text", true);
-        renderInput("carrera", "Carrera", "text", true);
-        renderInput("matricula", "Número de Matrícula", "number", true);
-        renderInput("email", "Email", "email", true);
-        renderInput("telefono", "Teléfono", "text", true);
+    foreach ($formData['fields'] as $field) {
+        renderInput(
+            $field['name'],
+            $field['label'],
+            $field['type'] ?? 'text',
+            $field['required'] ?? false,
+            $field['value'] ?? ''
+        );
+    }
     ?>
     <div>
-        <button type="submit">Enviar</button>
+        <button type="submit"><?= $formData['submit'] ?? 'Enviar' ?></button>
     </div>
+
+    <?php
+    (!empty($formData['useAlerts'])) && include('src/components/alert.php') : '';
+    (!empty($formData['useModal'])) && include('src/components/modal.php') : '';
+    ?>
 </form>

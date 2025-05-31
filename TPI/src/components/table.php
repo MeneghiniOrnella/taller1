@@ -1,12 +1,8 @@
-<table class="">
-    <thead class="">
-        <tr class="">
-            <th class=""><?php $titleColumn ?></th>
-        </tr>
-    </thead>
-    <tbody class="">
-        <tr class="">
-            <td class=""><?php $infoColumn ?></td>
-        </tr>
-    </tbody>
+<table>
+  <tr>
+    <th><?php $columnTitle; ?></th>
+  </tr>
+  <tr>
+    <td><?php $column; ?></td>
+  </tr>
 </table>

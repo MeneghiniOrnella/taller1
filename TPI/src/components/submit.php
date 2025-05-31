@@ -1,31 +1,18 @@
 <?php
-include('../config/db.php');
+include('../utils/db.php');
+include('helpers/validate_fields.php');
+include('helpers/handle_redirect.php');
 
-$conn = connectDB();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $campos = ['nombre', 'apellido', 'carrera', 'matricula', 'email', 'telefono'];
+    $datos = validateFields($campos, $_POST);
 
-$campos = ['nombre', 'apellido', 'carrera', 'matricula', 'email', 'telefono'];
-$datos = [];
+    $stmt = mysqli_prepare($conn, "INSERT INTO egresados (nombre, apellido, carrera, matricula, email, telefono) VALUES (?, ?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, 'ssssss', ...array_values($datos));
 
-foreach ($campos as $campo) {
-    if (!isset($_POST[$campo]) || trim($_POST[$campo]) === '') {
-        exit("Falta completar el campo: $campo");
+    if (mysqli_stmt_execute($stmt)) {
+        redirectWith('../../registro.php', 'success', 1);
+    } else {
+        redirectWith('../../registro.php', 'error', 1);
     }
-    $datos[$campo] = trim($_POST[$campo]);
 }
-
-guardarSolicitud($conn, $datos);
-
-$mensaje = "Nueva solicitud de alta:\n";
-foreach ($datos as $k => $v) {
-    $mensaje .= ucfirst(str_replace('_', ' ', $k)) . ": $v\n";
-}
-
-$asunto = "Solicitud de alta de alumno";
-$cabeceras = "From: egresados@facultad.com\r\n";
-
-foreach (obtenerEmailsAdmins($conn) as $destinatario) {
-    mail($destinatario, $asunto, $mensaje, $cabeceras);
-}
-
-header("Location: ../../index.php?success=1");
-exit;
