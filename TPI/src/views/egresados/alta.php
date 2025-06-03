@@ -13,8 +13,6 @@ include_once('../../components/input.php');
 
     <form action="../../submit.php" method="POST">
         <?php
-        // Función renderInput($id, $label, $type = 'text', $required = false)
-
         renderInput('nombre', 'Nombre', 'text', true);
         renderInput('apellido', 'Apellido', 'text', true);
         renderInput('matricula', 'Matrícula', 'number', true);
@@ -22,7 +20,6 @@ include_once('../../components/input.php');
         renderInput('telefono', 'Teléfono', 'tel', false);
         renderInput('carrera', 'Carrera', 'text', false);
         ?>
-
         <button type="submit">Guardar</button>
     </form>
 

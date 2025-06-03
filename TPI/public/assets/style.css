@@ -4,3 +4,8 @@
 npx @tailwindcss/cli -i ./public/assets/style.css -o ./public/assets/output.css --watch
 https://tailwindcss.com/docs/installation/tailwind-cli
 */
+
+.links {
+    color: #25eb56; /* Tailwind's blue-600 */
+    text-decoration: none;
+}

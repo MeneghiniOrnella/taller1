@@ -1,4 +1,3 @@
-[ ] para hacer login se puede reutilzar el input y hacer que el archivo login utilice ese componente
 [ ] usar tailwind css, falta configurar archivo para agregar clases
 [ ] usar libreria de js como AOS para animaciones
 [ ] hacer el word con toda la documentacion y el codigo
@@ -27,3 +26,11 @@ Esta información deberá estar guardada en la misma base de datos de la aplicac
 • Confirmar o rechazar solicitudes de egresados
 • Generar un listado con todos los egresados y sus datos de contacto
 • Cambiar su contraseña
+## Link local
+http://localhost/taller1/TPI/index.php
+
+http://localhost/taller1/TPI/index.php...?success=1
+
+## Información adicional
+https://preline.co/docs/alerts.html
+https://icon-icons.com/es/icono/universidad/180696

@@ -1,23 +1,36 @@
-<?php include('src/components/input.php'); ?>
+<?php
+include('input.php');
+// include_once('form.php');
+?>
+<div class="max-w-md mx-auto mt-8 bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+    <?php if (!empty($formData['useAlerts'])) include('alert.php'); ?>
 
-<form action="<?= $formData['action'] ?? '' ?>" method="<?= $formData['method'] ?? 'post' ?>">
-    <?php
-    foreach ($formData['fields'] as $field) {
-        renderInput(
-            $field['name'],
-            $field['label'],
-            $field['type'] ?? 'text',
-            $field['required'] ?? false,
-            $field['value'] ?? ''
-        );
-    }
-    ?>
-    <div>
-        <button type="submit"><?= $formData['submit'] ?? 'Enviar' ?></button>
-    </div>
+    <form action="<?= $formData['action'] ?? '' ?>" method="<?= $formData['method'] ?? 'post' ?>" class="space-y-4">
 
-    <?php
-    (!empty($formData['useAlerts'])) && include('src/components/alert.php') : '';
-    (!empty($formData['useModal'])) && include('src/components/modal.php') : '';
-    ?>
-</form>
+    <h2 class="text-2xl font-semibold text-center mb-6 text-amber-300"><?= $formData['title'] ?? 'Formulario' ?></h2>
+        <?php
+        foreach ($formData['fields'] as $field) {
+            renderInput(
+                $field['name'],
+                $field['label'],
+                $field['type'] ?? 'text',
+                $field['required'] ?? false,
+                $field['value'] ?? ''
+            );
+        }
+        ?>
+        <div class="mt-6">
+            <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200">
+                <?= $formData['submit'] ?? 'Enviar' ?>
+            </button>
+        </div>
+
+        <?php
+        if (!empty($formData['useModal'])) {
+            include('modal.php');
+        }
+        ?>
+    </form>
+</div>
+

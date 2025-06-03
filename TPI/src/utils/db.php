@@ -96,5 +96,6 @@ insertEmailsAdmin($connection);
 insertAdmins($connection);
 insertEgresados($connection, 4);
 
-echo "✅ Base de datos inicializada correctamente.";
+// echo "✅ Base de datos inicializada correctamente.";
+include_once 'src/components/alert.php';
 ?>

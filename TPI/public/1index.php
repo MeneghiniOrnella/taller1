@@ -9,3 +9,5 @@ foreach ($components as $component) {
     include("src/components/{$component}.php");
 }
 ?>
+
+<!-- http://localhost/taller1/TPI/public/index.php -->

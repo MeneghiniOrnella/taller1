@@ -16,3 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirectWith('../../registro.php', 'error', 1);
     }
 }
+if (mysqli_stmt_execute($stmt)) {
+    $admins = mysqli_query($connection, "SELECT email FROM administradores");
+    $asunto = "Nuevo registro de egresado";
+    $mensaje = "Se ha registrado un nuevo egresado: {$datos['nombre']} {$datos['apellido']}, Matricula: {$datos['matricula']}";
+    $headers = "From: sistema@instituto.com";
+
+    while ($admin = mysqli_fetch_assoc($admins)) {
+        mail($admin['email'], $asunto, $mensaje, $headers);
+    }
+
+    redirectWith('../registro.php', 'success', 1);
+}
+
