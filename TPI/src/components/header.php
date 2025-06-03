@@ -22,7 +22,6 @@
                             </a>
                         <?php endforeach; ?>
                     <?php endif; ?>
-
                     <?php if (isset($_SESSION['logged'])): ?>
                         <a href="/views/auth/logout.php" class="bg-white text-blue-700 px-3 py-1 rounded hover:bg-blue-100 transition duration-200 text-sm font-semibold">
                             Cerrar sesión
