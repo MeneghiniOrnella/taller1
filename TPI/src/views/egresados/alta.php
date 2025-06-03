@@ -1,26 +1,18 @@
-<?php include_once(__DIR__ . '/../../components/input.php'); ?>
+<?php
+$formData = [
+    'title' => 'Crear Nuevo Egresado',
+    'action' => '../../submit.php',
+    'method' => 'POST',
+    'submit' => 'Guardar',
+    'useAlerts' => true,
+    'fields' => [
+        ['name' => 'nombre', 'label' => 'Nombre', 'type' => 'text', 'required' => true],
+        ['name' => 'apellido', 'label' => 'Apellido', 'type' => 'text', 'required' => true],
+        ['name' => 'matricula', 'label' => 'Matrícula', 'type' => 'number', 'required' => true],
+        ['name' => 'email', 'label' => 'Email', 'type' => 'email', 'required' => true],
+        ['name' => 'telefono', 'label' => 'Teléfono', 'type' => 'tel'],
+        ['name' => 'carrera', 'label' => 'Carrera', 'type' => 'text'],
+    ]
+];
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <title>Crear Egresado</title>
-</head>
-<body>
-    <h1>Crear Nuevo Egresado</h1>
-
-    <form action="../../submit.php" method="POST">
-        <?php
-        renderInput('nombre', 'Nombre', 'text', true);
-        renderInput('apellido', 'Apellido', 'text', true);
-        renderInput('matricula', 'Matrícula', 'number', true);
-        renderInput('email', 'Email', 'email', true);
-        renderInput('telefono', 'Teléfono', 'tel', false);
-        renderInput('carrera', 'Carrera', 'text', false);
-        ?>
-        <button type="submit">Guardar</button>
-    </form>
-
-    <a href="lista.php">Volver al listado</a>
-</body>
-</html>
+include_once(__DIR__ . '/../../components/form.php');

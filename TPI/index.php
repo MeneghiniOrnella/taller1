@@ -18,7 +18,6 @@ renderPage('src/views/egresados/alta.php', [
     'navItems' => [
         'Inicio' => 'index.php',
         'Egresados' => 'src/views/egresados/lista.php',
-        'Ingresar' => 'src/views/auth/login.php',
-        'Logout' => 'src/views/auth/logout.php'
+        'Ingresar' => 'src/views/auth/login.php'
     ]
 ]);
