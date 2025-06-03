@@ -18,7 +18,7 @@ $carreras = mysqli_query($conn, "SELECT id, nombre FROM carreras");
     <select name="carrera" required>
         <option value="">Seleccione</option>
         <?php while ($row = mysqli_fetch_assoc($carreras)) : ?>
-            <option value="<?= $row['nombre'] ?>"><?= $row['nombre'] ?></option>
+            <option value="<?= $row['carrera'] ?>"><?= $row['carrera'] ?></option>
         <?php endwhile; ?>
     </select><br><br>
 

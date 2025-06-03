@@ -1,6 +1,4 @@
-<?php
-include_once('../../components/input.php');
-?>
+<?php include_once(__DIR__ . '/../../components/input.php'); ?>
 
 <!DOCTYPE html>
 <html lang="es">

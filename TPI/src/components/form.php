@@ -1,6 +1,5 @@
 <?php
 include('input.php');
-// include_once('form.php');
 ?>
 <div class="max-w-md mx-auto mt-8 bg-white p-6 rounded-lg shadow-lg border border-gray-200">
     <?php if (!empty($formData['useAlerts'])) include('alert.php'); ?>
@@ -21,7 +20,7 @@ include('input.php');
         ?>
         <div class="mt-6">
             <button type="submit"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200">
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200">
                 <?= $formData['submit'] ?? 'Enviar' ?>
             </button>
         </div>
