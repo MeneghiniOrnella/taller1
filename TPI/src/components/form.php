@@ -23,7 +23,8 @@ include_once(__DIR__ . '/input.php');
             </button>
         </div>
         <?php
-        if (!empty($formData['useAlerts'])) include_once(__DIR__ . '/alert.php');
+        header("Location: index.php?success=1");
+        exit;
         if (!empty($formData['useModal'])) include_once(__DIR__ . '/modal.php');
         ?>
     </form>
