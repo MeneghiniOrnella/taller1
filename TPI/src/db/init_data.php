@@ -29,16 +29,21 @@ function insertInitialData(mysqli $conn): void {
     $res = mysqli_query($conn, "SELECT id FROM carreras LIMIT 1");
     $carrera_id = mysqli_fetch_assoc($res)['id'] ?? 1;
     for ($i = 1; $i <= 4; $i++) {
-        $stmt = mysqli_prepare($conn, "INSERT INTO egresados (id, nombre, apellido, matricula, email, telefono, carrera_id, estado) VALUES (?, ?, ?, ?, ?, ?, 'pendiente')");
-        $id = $i;
-        $nombre = "Nombre$i";
-        $apellido = "Apellido$i";
-        $matricula = 1000 + $i;
-        $email = "correo$i@example.com";
-        $telefono = 1234567890 + $i;
-        mysqli_stmt_bind_param($stmt, 'ssissi', $nombre, $apellido, $matricula, $email, $telefono, $carrera_id);
-        mysqli_stmt_execute($stmt);
+    $stmt = mysqli_prepare($conn,
+        "INSERT INTO egresados (nombre, apellido, matricula, email, telefono, carrera_id, estado)
+         VALUES (?, ?, ?, ?, ?, ?, ?)"
+    );
+    $nombre = "Nombre$i";
+    $apellido = "Apellido$i";
+    $matricula = 1000 + $i;
+    $email = "correo$i@example.com";
+    $telefono = 1234567890 + $i;
+    $estado = 'pendiente';
 
-        sendEmailToAdmins($conn, $nombre, $apellido, $email);
-    }
+    mysqli_stmt_bind_param($stmt, 'ssissis', $nombre, $apellido, $matricula, $email, $telefono, $carrera_id, $estado);
+    mysqli_stmt_execute($stmt);
+
+    sendEmailToAdmins($conn, $nombre, $apellido, $email);
+}
+
 }
