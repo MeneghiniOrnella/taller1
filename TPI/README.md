@@ -3,18 +3,21 @@
 
 ## CRITERIOS DE EVALUACIÓN
 Aplicar los contenidos abordados en la asignatura Taller de Lenguajes I para desarrollar una aplicación web en PHP, segura y accesible. 
+[si] php  
+[no finalizado] segura 
+[mas o menos] accesibilidad
 ## CONSIGNAS
 Se deberá realizar una Aplicación Web (programas PHP y Base de Datos) de acuerdo con los requerimientos establecidos. 
 ### Aplicación: Administración de Egresados 
 Una Universidad desea brindar una plataforma de registro para los egresados de sus distintas carreras. Para eso se deberá desarrollar la aplicación web con la siguiente funcionalidad 
 ### Página pública
-El navegante completa un formulario de registro como Egresado con los siguientes datos:
+[no finalizado] El navegante completa un formulario de registro como Egresado con los siguientes datos:
 • Nombre y Apellido
 • Carrera
 • Nro. de matrícula
 • Email
 • Teléfono
-Al cargar un formulario se deberá enviar un email con los datos del formulario a todas las direcciones de correo cargadas por el Administrador en el Panel.
+[no funciona aun] Al cargar un formulario se deberá enviar un email con los datos del formulario a todas las direcciones de correo cargadas por el Administrador en el Panel.
 Además, deberá registrar una solicitud de alta de egresado. 
 ### Panel de Administración
 de acceso restringido, en donde un usuario Administrador tendrá acceso a tareas solamente permitidas para ese rol. 
@@ -29,7 +32,7 @@ Esta información deberá estar guardada en la misma base de datos de la aplicac
 http://localhost/taller1/TPI/index.php
 
 http://localhost/taller1/TPI/index.php...?success=1
-
-## Información adicional
-https://preline.co/docs/alerts.html
-https://icon-icons.com/es/icono/universidad/180696
+## Limks útiles
+• [Intalación de TailwindCSS](https://tailwindcss.com/docs/installation/tailwind-cli)
+• [Ayuda para modelar componentes](https://preline.co/docs/alerts.html)
+• [Favicon elegido](https://icon-icons.com/es/icono/universidad/180696)
