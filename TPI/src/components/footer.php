@@ -1,5 +1,4 @@
-<?php function renderFooter(): void {
-    echo "
+<?php function renderFooter(): void { ?>
         <footer class='bg-gradient-to-r from-black via-green-500 to-black shadow-md text-white text-center py-4 mt-auto'>
         <p>&copy; <?= date('Y') ?> Administración de Egresados</p>
     </footer>
@@ -7,5 +6,4 @@
 <script src='public/assets/index.js'></script>
 </body>
 </html>
-    ";
-} ?>
+<?php } ?>

@@ -1,7 +1,7 @@
 <?php
 function renderInput($id, $label, $type = 'text', $required = false, $value = '') {
     $isRequired = $required ? 'required' : '';
-    echo "
+?>
     <div class='mb-4'>
         <label for='$id' class='block text-sm font-medium mb-1'>$label</label>
         <input
@@ -13,5 +13,4 @@ function renderInput($id, $label, $type = 'text', $required = false, $value = ''
             class='w-full border border-gray-300 rounded-md px-3 py-2'
         />
     </div>
-    ";
-}
+<?php } ?>
