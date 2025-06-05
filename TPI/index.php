@@ -14,8 +14,8 @@ try {
 }
 ?>
 <?php renderHeader(); ?>
-    <div class="p-6">
+    <main class="p-6">
         <?php renderAlert($alert['type'], $alert['message']); ?>
         <?php if ($alert['type'] === 'success') mostrarEgresados($conn); ?>
-    </div>
+    </main>
 <?php renderFooter(); ?>
