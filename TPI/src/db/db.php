@@ -13,21 +13,20 @@ function mostrarEgresados(mysqli $conn): void {
     echo "<tr><th>Nombre</th><th>Apellido</th><th>Email</th><th>Carrera</th><th>Telefono</th></tr>";
     while ($row = mysqli_fetch_assoc($res)) {
         echo "<tr>
-                <td>{$row['nombre']} | </td>
-                <td>{$row['apellido']} | </td>
-                <td>{$row['carrera']} | </td>
-                <td>{$row['email']} | </td>
-                <td>{$row['telefono']} </td>
+                <td>{$row['nombre']}</td>
+                <td>{$row['apellido']}</td>
+                <td>{$row['carrera']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['telefono']}</td>
               </tr>";
     }
     echo "</table>";
 }
 
-// EJECUCIÓN
 try {
     $conn = connectDB();
     createTables($conn);
-    $alert = ['type' => 'success', 'message' => '✅ Tablas creadas e inicializadas correctamente.'];
+    $alert = ['type' => 'success', 'message' => 'Tablas creadas e inicializadas correctamente.'];
 } catch (Exception $e) {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];
 }

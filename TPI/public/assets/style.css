@@ -9,3 +9,41 @@ https://tailwindcss.com/docs/installation/tailwind-cli
     color: #25eb56; /* Tailwind's blue-600 */
     text-decoration: none;
 }
+
+/* styles.css */
+.alert-box {
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.875rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+    max-width: 48rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.alert-box.success {
+    color: #006400;
+    background-color: #ccffcc;
+    border: 1px solid #009900;
+}
+
+.alert-box.error {
+    color: #8b0000;
+    background-color: #ffcccc;
+    border: 1px solid #cc0000;
+}
+
+.alert-close {
+    margin-left: 1rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+}
+.alert-close:hover {
+    color: #000;
+}
