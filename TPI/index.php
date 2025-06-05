@@ -8,7 +8,7 @@ include_once 'src/components/alert.php';
 
 try {
     insertInitialData($conn);
-    $alert = ['type' => 'success', 'message' => '✅ Tablas creadas e inicializadas correctamente.'];
+    $alert = ['type' => 'success', 'message' => 'Tablas creadas e inicializadas correctamente!'];
 } catch (Exception $e) {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];
 }
