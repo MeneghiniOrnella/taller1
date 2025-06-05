@@ -10,7 +10,13 @@ function mostrarEgresados(mysqli $conn): void {
 
     echo "<h2>Egresados cargados</h2>";
     echo "<table border='1' cellpadding='8'>";
-    echo "<tr><th>Nombre</th><th>Apellido</th><th>Email</th><th>Carrera</th><th>Telefono</th></tr>";
+    echo "<tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Carrera</th>
+            <th>Email</th>
+            <th>Telefono</th>
+          </tr>";
     while ($row = mysqli_fetch_assoc($res)) {
         echo "<tr>
                 <td>{$row['nombre']}</td>
