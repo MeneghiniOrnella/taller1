@@ -6,11 +6,6 @@ include_once 'src/db/init_data.php';
 include_once 'src/views/egresados.php';
 include_once 'src/components/footer.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-
 try {
     insertInitialData($conn);
     $alert = ['type' => 'success', 'message' => 'Tablas creadas e inicializadas correctamente!'];

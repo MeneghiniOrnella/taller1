@@ -34,6 +34,6 @@ while ($row = mysqli_fetch_assoc($res)) {
 renderTable($headers, $rows);
 ?>
 
-<div class="max-w-5xl mx-auto mt-4 text-right">
-    <a href='form_egresado.php' class='bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition'>Agregar nuevo</a>
+<!-- <div class="max-w-5xl mx-auto mt-4 text-right">
+    <a href='form_egresado.php' class='bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition'>Agregar nuevo</a> -->
 </div>
