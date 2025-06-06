@@ -1,12 +1,7 @@
 <?php
-// function renderPage($viewPath, $data = []) {
-    // extract($data);
-    // $viewPath = __DIR__ . '/../../' . $viewPath;
-    // $layoutPath = __DIR__ . '/../layouts/layout.php';
+include_once(__DIR__ . '/../components/table.php');
 
-    // include($layoutPath);
-// }
-function renderQueryTable($query, $headers, $conn) {
+function renderQueryTable($conn, $query, $headers, $rowFormatter = null) {
     $res = mysqli_query($conn, $query);
     if (!$res) {
         die("Error en la consulta: " . mysqli_error($conn));
@@ -14,7 +9,7 @@ function renderQueryTable($query, $headers, $conn) {
 
     $rows = [];
     while ($row = mysqli_fetch_assoc($res)) {
-        $rows[] = array_values($row);
+        $rows[] = $rowFormatter ? $rowFormatter($row) : array_values($row);
     }
 
     renderTable($headers, $rows);
