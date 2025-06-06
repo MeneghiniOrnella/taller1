@@ -2,9 +2,9 @@
 renderQueryTable(
     $conn,
     "SELECT id, email FROM emails_admin",
-    ['ID', 'Email', 'Acciones'],
+    ['ID', 'Email'],
     function($row) {
-        return [$row['id'], $row['email'], 'no implementado'];
+        return [$row['id'], $row['email']];
     }
 );
 ?>

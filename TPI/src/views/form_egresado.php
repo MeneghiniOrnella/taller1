@@ -1,5 +1,5 @@
 <?php
-require_once 'src/db/connect.php';
+require_once 'src/db/connectDB.php';
 include_once 'src/components/form.php';
 
 $conn = connectDB();

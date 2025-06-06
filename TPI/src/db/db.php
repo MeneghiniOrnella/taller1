@@ -1,6 +1,6 @@
 <?php
-require_once 'connect.php';
-require_once 'create.php';
+require_once 'connectDB.php';
+require_once 'createTables.php';
 
 function mostrarEgresados(mysqli $conn): void {
     $res = mysqli_query($conn, "
