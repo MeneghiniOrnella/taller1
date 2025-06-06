@@ -1,17 +1,15 @@
 <?php
 require_once 'src/db/connect.php';
+include_once 'src/components/form.php';
 
 $conn = connectDB();
-
 $id = $_GET['id'] ?? null;
-$egresado = ['nombre' => '', 'apellido' => '', 'matricula' => '', 'email' => '', 'telefono' => '', 'carrera_id' => '', 'estado' => 'pendiente'];
+$datos = ['nombre' => '', 'apellido' => '', 'matricula' => '', 'email' => '', 'telefono' => '', 'estado' => 'pendiente', 'carrera_id' => 1];
 
 if ($id) {
     $res = mysqli_query($conn, "SELECT * FROM egresados WHERE id = $id");
-    $egresado = mysqli_fetch_assoc($res);
+    $datos = mysqli_fetch_assoc($res);
 }
-
-$carreras = mysqli_query($conn, "SELECT id, nombre FROM carreras");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
@@ -22,35 +20,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql = "INSERT INTO egresados (nombre, apellido, matricula, email, telefono, carrera_id, estado)
                 VALUES ('$nombre', '$apellido', $matricula, '$email', $telefono, $carrera_id, '$estado')";
     }
-
     mysqli_query($conn, $sql);
     header("Location: index.php?tabla=egresados");
     exit;
 }
-?>
 
-<h2><?= $id ? "Editar" : "Nuevo" ?> Egresado</h2>
-<form method="post">
-    <label>Nombre: <input name="nombre" value="<?= $egresado['nombre'] ?>"></label><br>
-    <label>Apellido: <input name="apellido" value="<?= $egresado['apellido'] ?>"></label><br>
-    <label>Matrícula: <input name="matricula" value="<?= $egresado['matricula'] ?>"></label><br>
-    <label>Email: <input name="email" value="<?= $egresado['email'] ?>"></label><br>
-    <label>Teléfono: <input name="telefono" value="<?= $egresado['telefono'] ?>"></label><br>
-    <label>Carrera:
-        <select name="carrera_id">
-            <?php while ($c = mysqli_fetch_assoc($carreras)) { ?>
-                <option value="<?= $c['id'] ?>" <?= $c['id'] == $egresado['carrera_id'] ? 'selected' : '' ?>>
-                    <?= $c['nombre'] ?>
-                </option>
-            <?php } ?>
-        </select>
-    </label><br>
-    <label>Estado:
-        <select name="estado">
-            <option value="pendiente" <?= $egresado['estado'] === 'pendiente' ? 'selected' : '' ?>>pendiente</option>
-            <option value="aprobado" <?= $egresado['estado'] === 'aprobado' ? 'selected' : '' ?>>aprobado</option>
-            <option value="rechazado" <?= $egresado['estado'] === 'rechazado' ? 'selected' : '' ?>>rechazado</option>
-        </select>
-    </label><br><br>
-    <button type="submit">Guardar</button>
-</form>
+$formData = [
+    'title' => $id ? 'Editar Egresado' : 'Nuevo Egresado',
+    'action' => '',
+    'method' => 'post',
+    'submit' => 'Guardar',
+    'fields' => [
+        ['name' => 'nombre', 'label' => 'Nombre', 'value' => $datos['nombre'], 'required' => true],
+        ['name' => 'apellido', 'label' => 'Apellido', 'value' => $datos['apellido'], 'required' => true],
+        ['name' => 'matricula', 'label' => 'Matrícula', 'value' => $datos['matricula'], 'type' => 'number', 'required' => true],
+        ['name' => 'email', 'label' => 'Email', 'value' => $datos['email'], 'type' => 'email', 'required' => true],
+        ['name' => 'telefono', 'label' => 'Teléfono', 'value' => $datos['telefono'], 'type' => 'tel'],
+        ['name' => 'carrera_id', 'label' => 'ID Carrera', 'value' => $datos['carrera_id'], 'type' => 'number', 'required' => true],
+        ['name' => 'estado', 'label' => 'Estado', 'value' => $datos['estado'], 'required' => true],
+    ]
+];
+
+renderForm($formData);

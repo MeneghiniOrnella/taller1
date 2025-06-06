@@ -14,41 +14,41 @@ try {
 }
 ?>
 <?php renderHeader(); ?>
-    <main class="p-6">
-        <?php
-        renderAlert($alert['type'], $alert['message']);
-        $tablas = [
-            'egresados' => 'ABM Egresados',
-            'admins' => 'ABM Admins',
-            'carreras' => 'ABM Carreras',
-            'emails_admin' => 'ABM Emails Admin'
-        ];
-        ?>
-        <ul class="mt-4 space-y-2">
-            <?php foreach ($tablas as $key => $label): ?>
-            <li>
-                <a href="?tabla=<?= htmlspecialchars($key) ?>" class="text-blue-600 underline">
-                <?= htmlspecialchars($label) ?>
-                </a>
-            </li>
-            <?php endforeach; ?>
-        </ul>
+<main class="p-6">
+    <?php
+    renderAlert($alert['type'], $alert['message']);
+    $tablas = [
+        'egresados' => 'Egresados',
+        'carreras' => 'Carreras',
+        'emails_admin' => 'Emails de Notificación',
+        'admins' => 'Cuentas de Administradores'
+    ];
+    ?>
+    <ul class="mt-4 space-y-2">
+        <?php foreach ($tablas as $key => $label): ?>
+        <li>
+            <a href="?tabla=<?= htmlspecialchars($key) ?>" class="text-blue-600 underline">
+            <?= htmlspecialchars($label) ?>
+            </a>
+        </li>
+        <?php endforeach; ?>
+    </ul>
 
-        <div class="mt-6">
-            <?php
-            $tabla = $_GET['tabla'] ?? null;
-            if ($tabla === 'egresados') {
-                include 'src/views/egresados.php';
-            } elseif ($tabla === 'admins') {
-                include 'src/views/admins.php';
-            } elseif ($tabla === 'carreras') {
-                include 'src/views/carreras.php';
-            } elseif ($tabla === 'emails_admin') {
-                include 'src/views/emails_admin.php';
-            } else {
-                echo "<p>Seleccione una tabla para gestionar.</p>";
-            }
-            ?>
-        </div>
-    </main>
+    <div class="mt-6">
+        <?php
+        $tabla = $_GET['tabla'] ?? null;
+        if ($tabla === 'egresados') {
+            include 'src/views/egresados.php';
+        } elseif ($tabla === 'admins') {
+            include 'src/views/admins.php';
+        } elseif ($tabla === 'carreras') {
+            include 'src/views/carreras.php';
+        } elseif ($tabla === 'emails_admin') {
+            include 'src/views/emails_admin.php';
+        } else {
+            echo "<p>Seleccione una tabla para gestionar.</p>";
+        }
+        ?>
+    </div>
+</main>
 <?php renderFooter(); ?>

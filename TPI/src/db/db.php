@@ -7,7 +7,6 @@ function mostrarEgresados(mysqli $conn): void {
         SELECT e.nombre, e.apellido, e.email, e.telefono, c.nombre AS carrera
         FROM egresados e JOIN carreras c ON e.carrera_id = c.id
     ");
-
     echo "<h2>Egresados cargados</h2>";
     echo "<table border='1' cellpadding='8'>";
     echo "<tr>

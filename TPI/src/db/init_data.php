@@ -46,6 +46,7 @@ function insertInitialData(mysqli $conn): void {
         mysqli_stmt_bind_param($stmt, 'ssissis', $nombre, $apellido, $matricula, $email, $telefono, $carrera, $estado);
         mysqli_stmt_execute($stmt);
 
-        sendEmailToAdmins($conn, $nombre, $apellido, $email);
+        // NO ESTA FUNCIONANDO
+        // sendEmailToAdmins($conn, $nombre, $apellido, $email);
     }
 }

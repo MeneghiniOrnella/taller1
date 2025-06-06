@@ -7,14 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $campos = ['nombre', 'apellido', 'carrera', 'matricula', 'email', 'telefono'];
     $datos = validateFields($campos, $_POST);
 
-    $stmt = mysqli_prepare($connection, "INSERT INTO egresados (nombre, apellido, carrera, matricula, email, telefono) VALUES (?, ?, ?, ?, ?, ?)");
-    mysqli_stmt_bind_param($stmt, 'ssssss', ...array_values($datos));
-
-    if (mysqli_stmt_execute($stmt)) {
-        redirectWith('../../registro.php', 'success', 1);
-    } else {
-        redirectWith('../../registro.php', 'error', 1);
-    }
+    // ESTO ME PARECE QUE NO VA
+    // $stmt = mysqli_prepare($connection, "INSERT INTO egresados (nombre, apellido, carrera, matricula, email, telefono) VALUES (?, ?, ?, ?, ?, ?)");
+    // mysqli_stmt_bind_param($stmt, 'ssssss', ...array_values($datos));
+    // if (mysqli_stmt_execute($stmt)) {
+    //     redirectWith('../../registro.php', 'success', 1);
+    // } else {
+    //     redirectWith('../../registro.php', 'error', 1);
+    // }
 }
 if (mysqli_stmt_execute($stmt)) {
     $admins = mysqli_query($connection, "SELECT email FROM administradores");
