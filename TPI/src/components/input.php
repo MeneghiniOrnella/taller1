@@ -1,7 +1,5 @@
-<?php
-function renderInput($id, $label, $type = 'text', $required = false, $value = '') {
-    $isRequired = $required ? 'required' : '';
-?>
+<?php function renderInput($id, $label, $type = 'text', $required = false, $value = '') {
+    $isRequired = $required ? 'required' : ''; ?>
     <div class='mb-4'>
         <label for='$id' class='block text-sm font-medium mb-1'>$label</label>
         <input

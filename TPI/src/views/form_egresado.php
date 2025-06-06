@@ -4,25 +4,49 @@ include_once 'src/components/form.php';
 
 $conn = connectDB();
 $id = $_GET['id'] ?? null;
-$datos = ['nombre' => '', 'apellido' => '', 'matricula' => '', 'email' => '', 'telefono' => '', 'estado' => 'pendiente', 'carrera_id' => 1];
+
+$datos = [
+    'nombre' => '',
+    'apellido' => '',
+    'matricula' => '',
+    'email' => '',
+    'telefono' => '',
+    'estado' => 'pendiente',
+    'carrera_id' => 1
+];
 
 if ($id) {
     $res = mysqli_query($conn, "SELECT * FROM egresados WHERE id = $id");
-    $datos = mysqli_fetch_assoc($res);
+    if ($res && mysqli_num_rows($res) > 0) {
+        $datos = mysqli_fetch_assoc($res);
+    } else {
+        die("Egresado no encontrado.");
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    extract($_POST);
+    $nombre = $_POST['nombre'] ?? '';
+    $apellido = $_POST['apellido'] ?? '';
+    $matricula = $_POST['matricula'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $telefono = $_POST['telefono'] ?? '';
+    $carrera_id = $_POST['carrera_id'] ?? '';
+    $estado = $_POST['estado'] ?? '';
+
     if ($id) {
-        $sql = "UPDATE egresados SET nombre='$nombre', apellido='$apellido', matricula=$matricula,
-                email='$email', telefono=$telefono, carrera_id=$carrera_id, estado='$estado' WHERE id=$id";
+        $sql = "UPDATE egresados SET nombre='$nombre', apellido='$apellido', matricula='$matricula',
+                email='$email', telefono='$telefono', carrera_id='$carrera_id', estado='$estado' WHERE id=$id";
     } else {
         $sql = "INSERT INTO egresados (nombre, apellido, matricula, email, telefono, carrera_id, estado)
-                VALUES ('$nombre', '$apellido', $matricula, '$email', $telefono, $carrera_id, '$estado')";
+                VALUES ('$nombre', '$apellido', '$matricula', '$email', '$telefono', '$carrera_id', '$estado')";
     }
-    mysqli_query($conn, $sql);
-    header("Location: index.php?tabla=egresados");
-    exit;
+
+    if (mysqli_query($conn, $sql)) {
+        header("Location: egresados.php");
+        exit;
+    } else {
+        die("Error al guardar los datos: " . mysqli_error($conn));
+    }
 }
 
 $formData = [
@@ -42,3 +66,4 @@ $formData = [
 ];
 
 renderForm($formData);
+?>
