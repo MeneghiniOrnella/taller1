@@ -14,19 +14,20 @@ El navegante completa un formulario de registro como Egresado con los siguientes
 - Nro. de matrícula
 - Email
 - Teléfono
+✅❌
 
-Al cargar un formulario se deberá enviar un email con los datos del formulario a todas las direcciones de correo cargadas por el Administrador en el Panel.
+Al cargar un formulario se deberá enviar un email con los datos del formulario a todas las direcciones de correo cargadas por el Administrador en el Panel. ✅❌
 
-Además, deberá registrar una solicitud de alta de egresado. 
+Además, deberá registrar una solicitud de alta de egresado. ❌
 ### Panel de Administración
-de acceso restringido, en donde un usuario Administrador tendrá acceso a tareas solamente permitidas para ese rol. 
-El acceso al panel se deberá validar con usuario y contraseña.
+de acceso restringido, en donde un usuario Administrador tendrá acceso a tareas solamente permitidas para ese rol. ✅❌
+El acceso al panel se deberá validar con usuario y contraseña. ✅❌
 Esta información deberá estar guardada en la misma base de datos de la aplicación El Administrador deberá hacer las siguientes funciones:
-- ABM de tabla de Carreras
-- ABM de tabla de emails para recibir alertas de nuevos Egresados
+- ABM de tabla de Carreras❌
+- ABM de tabla de emails para recibir alertas de nuevos Egresados❌
 - Confirmar o rechazar solicitudes de egresados
-- Generar un listado con todos los egresados y sus datos de contacto
-- Cambiar su contraseña.
+- Generar un listado con todos los egresados y sus datos de contacto ✅
+- Cambiar su contraseña.❌
 ## Link local
 http://localhost/taller1/TPI/index.php
 http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi

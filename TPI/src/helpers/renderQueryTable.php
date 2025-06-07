@@ -1,7 +1,7 @@
 <?php
 include_once(__DIR__ . '/../components/table.php');
 
-function renderQueryTable($conn, $query, $headers, $rowFormatter = null) {
+function renderQueryTable($conn, $query, $headers, $rowFormatter = null, $table) {
     $res = mysqli_query($conn, $query);
     if (!$res) {
         die("Error en la consulta: " . mysqli_error($conn));
@@ -12,5 +12,5 @@ function renderQueryTable($conn, $query, $headers, $rowFormatter = null) {
         $rows[] = $rowFormatter ? $rowFormatter($row) : array_values($row);
     }
 
-    renderTable($headers, $rows);
+    renderTable($headers, $rows, $table);
 }

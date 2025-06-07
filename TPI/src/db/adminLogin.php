@@ -2,7 +2,7 @@
 session_start();
 include('../utils/db.php');
 include('helpers/validate_fields.php');
-include('helpers/handle_redirect.php');
+include('auth/loginHandler.php');
 
 $datos = validateFields(['email', 'password'], $_POST);
 
@@ -18,5 +18,6 @@ if ($admin && password_verify($datos['password'], $admin['password'])) {
     $_SESSION['admin'] = $admin['email'];
     header('Location: ../dashboard.php');
 } else {
-    redirectWith('../views/auth/login.php', 'error', 1);
+    echo "Usuario o contraseña incorrectos.";
+    //redirectWith('../views/auth/login.php', 'error', 1);
 }

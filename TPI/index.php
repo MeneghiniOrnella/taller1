@@ -3,6 +3,7 @@ include_once 'src/components/alert.php';
 include_once 'src/components/header.php';
 include_once 'src/db/db.php';
 include_once 'src/db/init_data.php';
+include_once 'src/helpers/deleteRow.php';
 include_once 'src/helpers/renderQueryTable.php';
 include_once 'src/components/footer.php';
 
@@ -15,9 +16,12 @@ try {
 ?>
 <?php renderHeader(); ?>
 <main class="p-6">
+    <a href="src/views/login.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Iniciar sesión
+    </a>
     <?php
     renderAlert($alert['type'], $alert['message']);
-    $tablas = [
+    $tables = [
         'egresados' => 'Egresados',
         'carreras' => 'Carreras',
         'emails_admin' => 'Emails de Notificación',
@@ -25,7 +29,7 @@ try {
     ];
     ?>
     <ul class="mt-4 space-y-2">
-        <?php foreach ($tablas as $key => $label): ?>
+        <?php foreach ($tables as $key => $label): ?>
         <li>
             <a href="?tabla=<?= htmlspecialchars($key) ?>" class="text-blue-600 underline">
             <?= htmlspecialchars($label) ?>
@@ -36,14 +40,14 @@ try {
 
     <div class="mt-6">
         <?php
-        $tabla = $_GET['tabla'] ?? null;
-        if ($tabla === 'egresados') {
+        $table = $_GET['tabla'] ?? null;
+        if ($table === 'egresados') {
             include 'src/views/egresados.php';
-        } elseif ($tabla === 'admins') {
+        } elseif ($table === 'admins') {
             include 'src/views/admins.php';
-        } elseif ($tabla === 'carreras') {
+        } elseif ($table === 'carreras') {
             include 'src/views/carreras.php';
-        } elseif ($tabla === 'emails_admin') {
+        } elseif ($table === 'emails_admin') {
             include 'src/views/emails_admin.php';
         } else {
             echo "<p>Seleccione una tabla para gestionar.</p>";

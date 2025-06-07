@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: egresados.php");
-        exit;
+        // header("Location: egresados.php");
+        // exit;
     } else {
         die("Error al guardar los datos: " . mysqli_error($conn));
     }
