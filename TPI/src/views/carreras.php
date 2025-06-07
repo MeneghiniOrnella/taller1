@@ -2,9 +2,9 @@
 renderQueryTable(
     $conn,
     "SELECT id, nombre FROM carreras",
-    ['ID', 'Nombre', 'Acciones'],
+    ['Nombre'],
     function($row) {
-        return [$row['id'], $row['nombre'], 'no implementado'];
+        return [$row['nombre']];
     }
 );
 ?>

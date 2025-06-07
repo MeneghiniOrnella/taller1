@@ -3,8 +3,7 @@ include_once 'src/components/alert.php';
 include_once 'src/components/header.php';
 include_once 'src/db/db.php';
 include_once 'src/db/init_data.php';
-include_once 'src/helpers/render.php';
-// include_once 'src/views/egresados.php';
+include_once 'src/helpers/renderQueryTable.php';
 include_once 'src/components/footer.php';
 
 try {
