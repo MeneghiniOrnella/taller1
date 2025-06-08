@@ -2,9 +2,9 @@
 renderQueryTable(
     $conn,
     "SELECT id, email FROM emails_admin",
-    ['Email'],
+    ['id', 'Email'],
     function($row) {
-        return [$row['email']];
+        return [$row['id'], $row['email']];
     }
 );
 ?>

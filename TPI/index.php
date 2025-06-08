@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include_once 'src/components/alert.php';
 include_once 'src/components/header.php';
 include_once 'src/db/db.php';
@@ -8,8 +11,12 @@ include_once 'src/helpers/renderQueryTable.php';
 include_once 'src/components/footer.php';
 
 try {
-    insertInitialData($conn);
-    $alert = ['type' => 'success', 'message' => 'Tablas creadas e inicializadas correctamente!'];
+    if ($_GET['init'] ?? false) {
+        insertInitialData($conn);
+        $alert = ['type' => 'success', 'message' => 'Tablas creadas e inicializadas correctamente!'];
+    } else {
+        $alert = ['type' => 'info', 'message' => 'Sistema cargado.'];
+    }
 } catch (Exception $e) {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];
 }

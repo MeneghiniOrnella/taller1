@@ -4,18 +4,18 @@ include('../utils/db.php');
 include('helpers/validate_fields.php');
 include('auth/loginHandler.php');
 
-$datos = validateFields(['email', 'password'], $_POST);
+$datos = validateFields(['usuario', 'password'], $_POST);
 
 $conn = connectDB();
-$query = "SELECT * FROM administradores WHERE email = ?";
+$query = "SELECT * FROM admins WHERE usuario = ?";
 $stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, 's', $datos['email']);
+mysqli_stmt_bind_param($stmt, 's', $datos['usuario']);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 $admin = mysqli_fetch_assoc($result);
 
 if ($admin && password_verify($datos['password'], $admin['password'])) {
-    $_SESSION['admin'] = $admin['email'];
+    $_SESSION['admin'] = $admin['usuario'];
     header('Location: ../dashboard.php');
 } else {
     echo "Usuario o contraseña incorrectos.";
