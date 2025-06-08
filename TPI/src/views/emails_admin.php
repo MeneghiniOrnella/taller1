@@ -5,6 +5,7 @@ renderQueryTable(
     ['Email'],
     function($row) {
         return [$row['email']];
-    }
+    },
+    'emails_admin'
 );
 ?>

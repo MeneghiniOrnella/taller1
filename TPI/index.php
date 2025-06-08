@@ -19,9 +19,15 @@ try {
     <a href="src/views/login.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Iniciar sesión
     </a>
-    <a href="src/views/formEgresado.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 ml-4 rounded">
-        Añadir Egresado
-    </a>
+    <div class="bg-green-200 text-black p-4 mt-4 rounded">
+        <h1>Bienvenido alumno</h1>
+        <p class="mb-4">
+            Si usted se quiere egresar ingrese sus datos aqui:
+        </p>
+        <a href="src/views/formEgresado.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 ml-4 rounded">
+            Añadir Egresado
+        </a>
+    </div>
     <?php
     renderAlert($alert['type'], $alert['message']);
     $tables = [
