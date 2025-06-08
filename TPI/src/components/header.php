@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?? 'Administración de Egresados' ?></title>
-    <link rel="icon" href="public/assets/favicon.ico" type="image/x-icon">
-    <link href="public/assets/output.css" rel="stylesheet">
+    <link rel="icon" href="/taller1/TPI/public/assets/favicon.ico" type="image/x-icon">
+    <link href="/taller1/TPI/public/assets/output.css" rel="stylesheet">
 </head>
 <body class="min-h-screen flex flex-col bg-white text-gray-800">
     <nav class="bg-gradient-to-r from-black via-green-500 to-black shadow-md text-white">

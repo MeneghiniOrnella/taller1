@@ -3,6 +3,7 @@ session_start();
 include_once(__DIR__ . '/../components/form.php');
 include_once(__DIR__ . '/../components/header.php');
 
+renderHeader();
 $formData = [
     'title' => 'Ingrese sus datos',
     'action' => '',
@@ -15,48 +16,48 @@ $formData = [
             'label' => 'Nombre',
             'type' => 'text',
             'required' => true,
-            'value' => $_SESSION['old']['nombre'] ?? ''
+            'value' => ''
         ],
         [
             'name' => 'apellido',
             'label' => 'Apellido',
             'type' => 'text',
             'required' => true,
-            'value' => $_SESSION['old']['apellido'] ?? ''
+            'value' => ''
         ],
         [
             'name' => 'carrera',
             'label' => 'Carrera',
             'type' => 'text',
             'required' => true,
-            'value' => $_SESSION['old']['carrera'] ?? ''
+            'value' => ''
         ],
         [
             'name' => 'matricula',
             'label' => 'Matrícula',
             'type' => 'int',
             'required' => true,
-            'value' => $_SESSION['old']['matricula'] ?? ''
+            'value' => ''
         ],
         [
             'name' => 'email',
             'label' => 'Email',
             'type' => 'email',
             'required' => true,
-            'value' => $_SESSION['old']['email'] ?? ''
+            'value' => ''
         ],
         [
             'name' => 'telefono',
             'label' => 'Teléfono',
             'type' => 'int',
             'required' => true,
-            'value' => $_SESSION['old']['telefono'] ?? ''
+            'value' => ''
         ],
     ]
 ];
 
-unset($_SESSION['old']);
-
 renderForm($formData);
 include_once(__DIR__ . '/../components/footer.php');
+
+renderFooter();
 ?>
