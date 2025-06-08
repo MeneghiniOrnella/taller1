@@ -8,7 +8,7 @@ function renderForm($formData) { ?>
         <?php foreach ($formData['fields'] as $field) {
             renderInput(
                 $field['name'],
-                $field['label'],
+                $field['label'] ?? '',
                 $field['type'] ?? 'text',
                 $field['required'] ?? false,
                 $field['value'] ?? ''

@@ -4,6 +4,8 @@ include_once 'src/components/header.php';
 include_once 'src/db/db.php';
 include_once 'src/db/init_data.php';
 include_once 'src/helpers/deleteRow.php';
+include_once 'src/helpers/addRow.php';
+include_once 'src/helpers/editRow.php';
 include_once 'src/helpers/renderQueryTable.php';
 include_once 'src/components/footer.php';
 
@@ -13,8 +15,15 @@ try {
 } catch (Exception $e) {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];
 }
-?>
-<?php renderHeader(); ?>
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'], $_POST['tabla'])) {
+    $id = (int)$_POST['delete_id'];
+    $tabla = $_POST['tabla'];
+
+    deleteRow($conn, $tabla, $id);
+}
+
+renderHeader(); ?>
 <main class="p-6">
     <a href="src/views/login.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Iniciar sesión
@@ -61,7 +70,18 @@ try {
         } else {
             echo "<p>Seleccione una tabla para gestionar.</p>";
         }
-        ?>
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['delete_id'], $_POST['tabla'])) {
+                $id = (int)$_POST['delete_id'];
+                $tabla = $_POST['tabla'];
+                deleteRow($conn, $tabla, $id);
+            } elseif (isset($_POST['tabla'])) {
+                insertRow($conn, $_POST['tabla']);
+                header("Location: index.php?tabla=" . urlencode($_POST['tabla']));
+                exit;
+            }
+        } ?>
     </div>
 </main>
 <?php renderFooter(); ?>

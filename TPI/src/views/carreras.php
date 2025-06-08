@@ -1,4 +1,18 @@
 <?php
+global $conn;
+include_once(__DIR__ . '/../components/form.php');
+
+renderForm([
+    'action' => 'index.php?tabla=carreras',
+    'method' => 'post',
+    'title' => 'Agregar nueva carrera',
+    'submit' => 'Agregar',
+    'fields' => [
+        ['name' => 'tabla', 'type' => 'hidden', 'value' => 'carreras'],
+        ['name' => 'nombre', 'label' => 'Nombre de la carrera', 'required' => true],
+    ]
+]);
+
 $table = 'carreras';
 renderQueryTable(
     $conn,

@@ -15,13 +15,14 @@
                         <td class='px-6 py-4'><?= htmlspecialchars($row[$i]) ?></td>
                     <?php } ?>
                     <td class='px-6 py-4 text-center space-x-2'>
-                        <a 
-                            href="?tabla=<?= $table ?>&delete_id=<?= $row[0] ?>" 
-                            onclick="return confirm('¿Desea borrar este registro?')" 
-                            class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
-                            Borrar
-                        </a>
-                        <a href="?edit_id=<?= $row[0] ?>" 
+                        <form action="" method="post" style="display:inline;" onsubmit="return confirm('¿Desea borrar este registro?');">
+                            <input type="hidden" name="tabla" value="<?= htmlspecialchars($table) ?>">
+                            <input type="hidden" name="delete_id" value="<?= htmlspecialchars($row[0]) ?>">
+                            <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+                                Borrar
+                            </button>
+                        </form>
+                        <a href="?tabla=<?= $table ?>&edit_id=<?= $row[0] ?>" 
                            class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
                            Editar
                         </a>
@@ -30,4 +31,10 @@
             <?php } ?>
         </tbody>
     </table>
+    <form action="src/helpers/addRow.php" method="post" style="display:inline;" onsubmit="return confirm('¿Desea añadir un registro?');">
+        <input type="hidden" name="tabla" value="<?= htmlspecialchars($table) ?>">
+        <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+        Añadir 1 fila al final
+        </button>
+    </form>
 <?php } ?>

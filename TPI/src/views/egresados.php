@@ -1,24 +1,23 @@
 <?php
 global $conn;
+include_once(__DIR__ . '/../components/form.php');
 
-if (isset($_GET['delete_id'])) {
-    $id = intval($_GET['delete_id']);
-
-    echo "<p>Intentando eliminar ID: $id</p>"; // DEBUG
-
-    $sql = "DELETE FROM egresados WHERE id = $id";
-    $res = mysqli_query($conn, $sql);
-
-    if (!$res) {
-        echo "<p class='text-red-600'>Error al ejecutar DELETE: " . mysqli_error($conn) . "</p>";
-    } else {
-        if (mysqli_affected_rows($conn) === 0) {
-            echo "<p class='text-yellow-600'>No se encontró ningún registro con ID = $id</p>";
-        } else {
-            echo "<p class='text-green-600'>Registro con ID = $id eliminado correctamente.</p>";
-        }
-    }
-}
+renderForm([
+    'action' => 'index.php?tabla=egresados',
+    'method' => 'post',
+    'title' => 'Agregar nuevo egresado',
+    'submit' => 'Agregar',
+    'fields' => [
+        ['name' => 'tabla', 'type' => 'hidden', 'value' => 'egresados'],
+        ['name' => 'nombre', 'label' => 'Nombre', 'required' => true],
+        ['name' => 'apellido', 'label' => 'Apellido', 'required' => true],
+        ['name' => 'matricula', 'label' => 'Matrícula', 'type' => 'number', 'required' => true],
+        ['name' => 'email', 'label' => 'Email', 'type' => 'email', 'required' => true],
+        ['name' => 'telefono', 'label' => 'Teléfono', 'type' => 'text'],
+        ['name' => 'carrera_id', 'label' => 'Carrera ID', 'type' => 'number', 'required' => true],
+        ['name' => 'estado', 'label' => 'Estado', 'required' => false],
+    ]
+]);
 
 renderQueryTable(
     $conn,
