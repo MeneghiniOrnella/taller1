@@ -15,10 +15,9 @@ renderForm([
 renderQueryTable(
     $conn,
     "SELECT id, email FROM emails_admin",
-    ['Email'],
+    ['id', 'Email'],
     function($row) {
-        return [$row['email']];
-    },
-    'emails_admin'
+        return [$row['id'], $row['email']];
+    }
 );
 ?>

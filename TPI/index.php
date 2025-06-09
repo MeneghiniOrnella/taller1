@@ -1,7 +1,9 @@
 <?php
-session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// Procesamiento de formularios ANTES de cualquier salida
+include_once 'src/components/alert.php';
+include_once 'src/components/header.php';
 include_once 'src/db/db.php';
 $conn = connectDB();
 if (!$conn) {
@@ -35,9 +37,11 @@ unset($_SESSION['alert']);
 // Insertar datos iniciales
 include_once 'src/db/init_data.php';
 try {
-    insertInitialData($conn);
-    if (!$alert) {
+    if ($_GET['init'] ?? false) {
+        insertInitialData($conn);
         $alert = ['type' => 'success', 'message' => 'Tablas creadas e inicializadas correctamente!'];
+    } else {
+        $alert = ['type' => 'info', 'message' => 'Sistema cargado.'];
     }
 } catch (Exception $e) {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];

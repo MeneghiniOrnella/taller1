@@ -23,8 +23,8 @@ Además, deberá registrar una solicitud de alta de egresado. ❌
 de acceso restringido, en donde un usuario Administrador tendrá acceso a tareas solamente permitidas para ese rol. ✅❌
 El acceso al panel se deberá validar con usuario y contraseña. ✅❌
 Esta información deberá estar guardada en la misma base de datos de la aplicación El Administrador deberá hacer las siguientes funciones:
-- ABM de tabla de Carreras❌
-- ABM de tabla de emails para recibir alertas de nuevos Egresados❌
+- ABM de tabla de Carreras✅❌
+- ABM de tabla de emails para recibir alertas de nuevos Egresados✅❌
 - Confirmar o rechazar solicitudes de egresados
 - Generar un listado con todos los egresados y sus datos de contacto ✅
 - Cambiar su contraseña.❌

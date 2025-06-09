@@ -24,6 +24,7 @@ renderQueryTable(
     FROM egresados e
     JOIN carreras c ON e.carrera_id = c.id",
     ['Id', 'Nombre', 'Apellido', 'Matrícula', 'Email', 'Teléfono', 'Carrera', 'Estado'],
+    'Listado de Egresados',
     function($row) {
         return [$row['id'], $row['nombre'], $row['apellido'], $row['matricula'], $row['email'], $row['telefono'], $row['carrera'], $row['estado']];
     },
