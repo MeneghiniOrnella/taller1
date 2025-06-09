@@ -13,7 +13,7 @@ function sendEmailToAdmins(mysqli $conn, string $nombre, string $apellido, strin
     $headers .= "From: egrsados@facultad.com" . "\r\n";
     $result = mysqli_query($conn, "SELECT email FROM emails_admin");
     while ($row = mysqli_fetch_assoc($result)) {
-        // mail($row['email'], $subject, $message, $headers);
+        mail($row['email'], $subject, $message, $headers);
         echo("<div style='margin-bottom: 1rem;'>
                 <strong>Asunto:</strong> $subject <br/>
                 <strong>Mensaje:</strong> $message <br/>

@@ -7,7 +7,7 @@ function renderForm($formData) { ?>
         <h2 class="text-2xl font-semibold text-center mb-6"><?= $formData['title'] ?? 'Formulario' ?></h2>
         <?php foreach ($formData['fields'] as $field) {
             renderInput(
-                $field['name'],
+                $field['name'] ?? '',
                 $field['label'] ?? '',
                 $field['type'] ?? 'text',
                 $field['required'] ?? false,

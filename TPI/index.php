@@ -5,6 +5,11 @@ include_once 'src/db/db.php';
 include_once 'src/helpers/deleteRow.php';
 include_once 'src/helpers/addRow.php';
 include_once 'src/helpers/editRow.php';
+include_once 'src/db/init_data.php';
+include_once 'src/components/alert.php';
+include_once 'src/components/header.php';
+include_once 'src/helpers/renderQueryTable.php';
+include_once 'src/components/footer.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_id'], $_POST['tabla'])) {
@@ -25,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $alert = $_SESSION['alert'] ?? null;
 unset($_SESSION['alert']);
 
-include_once 'src/db/init_data.php';
 try {
     insertInitialData($conn);
     if (!$alert) {
@@ -35,20 +39,15 @@ try {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];
 }
 
-include_once 'src/components/alert.php';
-include_once 'src/components/header.php';
-include_once 'src/helpers/renderQueryTable.php';
-include_once 'src/components/footer.php';
-
 renderHeader();
 ?>
+
 <main class="p-6">
     <a href="src/views/login.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Iniciar sesión
     </a>
-    <?php if ($alert) renderAlert($alert['type'], $alert['message']); ?>
-
     <?php
+    if ($alert) renderAlert($alert['type'], $alert['message']);
     $tables = [
         'egresados' => 'Egresados',
         'carreras' => 'Carreras',

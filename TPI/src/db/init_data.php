@@ -45,7 +45,7 @@ function insertInitialData(mysqli $conn): void {
     ];
 
     $stmt = mysqli_prepare($conn,
-        "INSERT INTO egresados (nombre, apellido, matricula, email, telefono, carrera_id, estado)
+        "INSERT IGNORE INTO egresados (nombre, apellido, matricula, email, telefono, carrera_id, estado)
          VALUES (?, ?, ?, ?, ?, ?, ?)"
     );
 
