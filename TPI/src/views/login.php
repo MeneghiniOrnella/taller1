@@ -1,27 +1,14 @@
 <?php
-include_once(__DIR__ . '/../components/form.php');
+global $conn;
 
-$formData = [
-    'action' => '/../auth/loginHandler.php',
+renderForm([
+    'action' => 'index.php?tabla=login',
     'method' => 'post',
-    'title' => 'Iniciar sesión',
-    'submit' => 'Entrar',
-    'useAlerts' => true,
+    'title' => 'Agregar nuevo administrador',
+    'submit' => 'Agregar',
     'fields' => [
-        [
-            'name' => 'usuario', 
-            'label' => 'Usuario', 
-            'type' => 'text', 
-            'required' => true
-        ],
-        [
-            'name' => 'password', 
-            'label' => 'Contraseña', 
-            'type' => 'password', 
-            'required' => true
-        ]
+        ['name' => 'tabla', 'type' => 'hidden', 'value' => 'carreras'],
+        ['name' => 'nombre', 'label' => 'Nombre de la carrera', 'required' => true],
     ]
-];
-
-renderForm($formData);
+]);
 ?>

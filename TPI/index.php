@@ -1,35 +1,59 @@
 <?php
-include_once 'src/components/alert.php';
-include_once 'src/components/header.php';
+session_start();
+
+// Procesamiento de formularios ANTES de cualquier salida
 include_once 'src/db/db.php';
-include_once 'src/db/init_data.php';
 include_once 'src/helpers/deleteRow.php';
 include_once 'src/helpers/addRow.php';
 include_once 'src/helpers/editRow.php';
-include_once 'src/helpers/renderQueryTable.php';
-include_once 'src/components/footer.php';
 
+// Acciones POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['delete_id'], $_POST['tabla'])) {
+        $id = (int)$_POST['delete_id'];
+        $tabla = $_POST['tabla'];
+        deleteRow($conn, $tabla, $id);
+        $_SESSION['alert'] = ['type' => 'success', 'message' => 'Fila eliminada correctamente.'];
+        header("Location: index.php?tabla=" . urlencode($tabla));
+        exit;
+    } elseif (isset($_POST['tabla'])) {
+        insertRow($conn, $_POST['tabla']);
+        $_SESSION['alert'] = ['type' => 'success', 'message' => 'Fila insertada correctamente.'];
+        header("Location: index.php?tabla=" . urlencode($_POST['tabla']));
+        exit;
+    }
+}
+
+// Carga de alertas si existen
+$alert = $_SESSION['alert'] ?? null;
+unset($_SESSION['alert']);
+
+// Insertar datos iniciales
+include_once 'src/db/init_data.php';
 try {
     insertInitialData($conn);
-    $alert = ['type' => 'success', 'message' => 'Tablas creadas e inicializadas correctamente!'];
+    if (!$alert) {
+        $alert = ['type' => 'success', 'message' => 'Tablas creadas e inicializadas correctamente!'];
+    }
 } catch (Exception $e) {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'], $_POST['tabla'])) {
-    $id = (int)$_POST['delete_id'];
-    $tabla = $_POST['tabla'];
+// Componentes visuales
+include_once 'src/components/alert.php';
+include_once 'src/components/header.php';
+include_once 'src/helpers/renderQueryTable.php';
+include_once 'src/components/footer.php';
 
-    deleteRow($conn, $tabla, $id);
-}
-
-renderHeader(); ?>
+renderHeader();
+?>
 <main class="p-6">
     <a href="src/views/login.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Iniciar sesión
     </a>
+    <?php if ($alert) renderAlert($alert['type'], $alert['message']); ?>
+
     <?php
-    renderAlert($alert['type'], $alert['message']);
     $tables = [
         'egresados' => 'Egresados',
         'carreras' => 'Carreras',
@@ -41,7 +65,7 @@ renderHeader(); ?>
         <?php foreach ($tables as $key => $label): ?>
         <li>
             <a href="?tabla=<?= htmlspecialchars($key) ?>" class="text-blue-600 underline">
-            <?= htmlspecialchars($label) ?>
+                <?= htmlspecialchars($label) ?>
             </a>
         </li>
         <?php endforeach; ?>
@@ -61,18 +85,7 @@ renderHeader(); ?>
         } else {
             echo "<p>Seleccione una tabla para gestionar.</p>";
         }
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['delete_id'], $_POST['tabla'])) {
-                $id = (int)$_POST['delete_id'];
-                $tabla = $_POST['tabla'];
-                deleteRow($conn, $tabla, $id);
-            } elseif (isset($_POST['tabla'])) {
-                insertRow($conn, $_POST['tabla']);
-                header("Location: index.php?tabla=" . urlencode($_POST['tabla']));
-                exit;
-            }
-        } ?>
+        ?>
     </div>
 </main>
-<?php renderFooter(); ?>
+<?php renderFooter();

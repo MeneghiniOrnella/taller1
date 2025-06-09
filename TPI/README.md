@@ -29,8 +29,8 @@ Esta información deberá estar guardada en la misma base de datos de la aplicac
 - Generar un listado con todos los egresados y sus datos de contacto ✅
 - Cambiar su contraseña.❌
 ## Link local
-http://localhost/taller1/TPI/index.php
-http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi
+- [http://localhost/taller1/TPI/index.php](http://localhost/taller1/TPI/index.php)
+- [http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi](http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi)
 ## Links útiles
 - [Intalación de TailwindCSS](https://tailwindcss.com/docs/installation/tailwind-cli)
 - [Ayuda para modelar componentes](https://preline.co/docs/alerts.html)

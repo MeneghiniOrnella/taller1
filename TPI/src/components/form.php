@@ -14,6 +14,9 @@ function renderForm($formData) { ?>
                 $field['value'] ?? ''
             );
         } ?>
+        <?php if (!empty($formData['tabla'])): ?>
+            <input type="hidden" name="tabla" value="<?= htmlspecialchars($formData['tabla']) ?>">
+        <?php endif; ?>
         <div class="mt-6">
             <button type="submit"
                 class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200">
@@ -23,4 +26,4 @@ function renderForm($formData) { ?>
         <?php if (!empty($formData['useModal'])) include_once(__DIR__ . '/modal.php'); ?>
     </form>
 </div>
-<?php } ?>
+<?php }

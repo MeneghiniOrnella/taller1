@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../db/connectDB.php';
+require_once __DIR__ . '/../components/form.php';
 
 function insertRow(mysqli $conn, string $table): void {
     file_put_contents(__DIR__ . '/debug.txt', "Formulario recibido\n", FILE_APPEND);

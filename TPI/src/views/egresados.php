@@ -1,6 +1,5 @@
 <?php
 global $conn;
-include_once(__DIR__ . '/../components/form.php');
 
 renderForm([
     'action' => 'index.php?tabla=egresados',
