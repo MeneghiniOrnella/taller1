@@ -1,13 +1,11 @@
 <?php
 session_start();
 
-// Procesamiento de formularios ANTES de cualquier salida
 include_once 'src/db/db.php';
 include_once 'src/helpers/deleteRow.php';
 include_once 'src/helpers/addRow.php';
 include_once 'src/helpers/editRow.php';
 
-// Acciones POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_id'], $_POST['tabla'])) {
         $id = (int)$_POST['delete_id'];
@@ -24,11 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Carga de alertas si existen
 $alert = $_SESSION['alert'] ?? null;
 unset($_SESSION['alert']);
 
-// Insertar datos iniciales
 include_once 'src/db/init_data.php';
 try {
     insertInitialData($conn);
@@ -39,7 +35,6 @@ try {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];
 }
 
-// Componentes visuales
 include_once 'src/components/alert.php';
 include_once 'src/components/header.php';
 include_once 'src/helpers/renderQueryTable.php';
@@ -88,4 +83,5 @@ renderHeader();
         ?>
     </div>
 </main>
+
 <?php renderFooter();

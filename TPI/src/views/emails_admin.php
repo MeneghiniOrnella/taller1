@@ -7,7 +7,7 @@ renderForm([
     'title' => 'Agregar nuevo email de administrador',
     'submit' => 'Agregar',
     'fields' => [
-        ['name' => 'tabla', 'type' => 'hidden', 'value' => 'carreras'],
+        ['name' => 'tabla', 'type' => 'hidden', 'value' => 'emails_admin'],
         ['name' => 'email', 'label' => 'Email', 'required' => true],
     ]
 ]);
@@ -15,9 +15,9 @@ renderForm([
 renderQueryTable(
     $conn,
     "SELECT id, email FROM emails_admin",
-    ['Email'],
+    ['id', 'Email'],
     function($row) {
-        return [$row['email']];
+        return [$row['id'], $row['email']];
     },
     'emails_admin'
 );

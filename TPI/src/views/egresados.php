@@ -27,6 +27,6 @@ renderQueryTable(
     function($row) {
         return [$row['id'], $row['nombre'], $row['apellido'], $row['matricula'], $row['email'], $row['telefono'], $row['carrera'], $row['estado']];
     },
-    'egresados',
+    'egresados'
 );
 ?>

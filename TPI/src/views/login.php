@@ -2,13 +2,14 @@
 global $conn;
 
 renderForm([
-    'action' => 'index.php?tabla=login',
+    'action' => 'index.php?tabla=admins',
     'method' => 'post',
-    'title' => 'Agregar nuevo administrador',
+    'title' => 'Inicio de sesión',
     'submit' => 'Agregar',
     'fields' => [
-        ['name' => 'tabla', 'type' => 'hidden', 'value' => 'carreras'],
-        ['name' => 'nombre', 'label' => 'Nombre de la carrera', 'required' => true],
+        ['name' => 'tabla', 'type' => 'hidden', 'value' => 'admins'],
+        ['name' => 'nombre', 'label' => 'usuario', 'required' => true],
+        ['name' => 'nombre', 'label' => 'password', 'required' => true],
     ]
 ]);
 ?>

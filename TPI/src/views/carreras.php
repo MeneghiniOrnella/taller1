@@ -12,7 +12,6 @@ renderForm([
     ]
 ]);
 
-$table = 'carreras';
 renderQueryTable(
     $conn,
     "SELECT id, nombre FROM $table",
@@ -20,6 +19,6 @@ renderQueryTable(
     function($row) {
         return [$row['id'], $row['nombre']];
     },
-    $table
+    'carreras'
 );
 ?>
