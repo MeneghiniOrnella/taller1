@@ -3,11 +3,15 @@ session_start();
 
 // Procesamiento de formularios ANTES de cualquier salida
 include_once 'src/db/db.php';
+$conn = connectDB();
+if (!$conn) {
+    die("Error de conexión a la base de datos: " . mysqli_connect_error());
+}
+
 include_once 'src/helpers/deleteRow.php';
 include_once 'src/helpers/addRow.php';
 include_once 'src/helpers/editRow.php';
 
-// Acciones POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_id'], $_POST['tabla'])) {
         $id = (int)$_POST['delete_id'];
@@ -39,7 +43,6 @@ try {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];
 }
 
-// Componentes visuales
 include_once 'src/components/alert.php';
 include_once 'src/components/header.php';
 include_once 'src/helpers/renderQueryTable.php';

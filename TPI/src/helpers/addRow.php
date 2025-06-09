@@ -3,8 +3,6 @@ require_once __DIR__ . '/../db/connectDB.php';
 require_once __DIR__ . '/../components/form.php';
 
 function insertRow(mysqli $conn, string $table): void {
-    file_put_contents(__DIR__ . '/debug.txt', "Formulario recibido\n", FILE_APPEND);
-
     if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {
         echo "<p class='text-red-600'>Nombre de tabla inválido.</p>";
         return;
@@ -12,7 +10,31 @@ function insertRow(mysqli $conn, string $table): void {
 
     switch ($table) {
         case 'carreras':
-            $stmt = mysqli_prepare($conn, "INSERT INTO carreras (nombre) VALUES ('Nueva carrera')");
+            $nombreCarrera = trim($_POST['nombre'] ?? '');
+
+            if ($nombreCarrera === '') {
+                echo "<p class='text-red-600'>⚠️ Faltó ingresar el nombre de la carrera.</p>";
+                return;
+            }
+
+            // Verificar si ya existe una carrera con ese nombre
+            $query = mysqli_prepare($conn, "SELECT COUNT(*) FROM carreras WHERE nombre = ?");
+            mysqli_stmt_bind_param($query, "s", $nombreCarrera);
+            mysqli_stmt_execute($query);
+            mysqli_stmt_bind_result($query, $count);
+            mysqli_stmt_fetch($query);
+            mysqli_stmt_close($query);
+
+            if ($count > 0) {
+                echo "<p class='text-red-600'>⚠️ La carrera '$nombreCarrera' ya existe en la base de datos.</p>";
+                return;
+            }
+
+            // Log para debug
+            file_put_contents(__DIR__ . '/debug.txt', "Insertando carrera: $nombreCarrera\n", FILE_APPEND);
+
+            $stmt = mysqli_prepare($conn, "INSERT INTO carreras (nombre) VALUES (?)");
+            mysqli_stmt_bind_param($stmt, "s", $nombreCarrera);
             break;
 
         case 'egresados':
@@ -63,17 +85,17 @@ function insertRow(mysqli $conn, string $table): void {
         return;
     }
 
-    if (!mysqli_stmt_execute($stmt)) {
+    file_put_contents(__DIR__ . '/debug.txt', "Antes de ejecutar\n", FILE_APPEND);
+    $resultado = mysqli_stmt_execute($stmt);
+    file_put_contents(__DIR__ . '/debug.txt', "Después de ejecutar\n", FILE_APPEND);
+    if (!$resultado) {
         $_SESSION['alert'] = ['type' => 'error', 'message' => mysqli_stmt_error($stmt)];
     } else {
         $_SESSION['alert'] = ['type' => 'success', 'message' => "Fila insertada correctamente."];
     }
-
-
     mysqli_stmt_close($stmt);
 }
 
-// Ejecutar si se llama directamente por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tabla'])) {
     $conn = connectDB();
     insertRow($conn, $_POST['tabla']);

@@ -21,8 +21,8 @@ $query = "SELECT * FROM admins WHERE usuario = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param('s', $usuario);
 $stmt->execute();
+mysqli_autocommit($conn, false);
 $result = $stmt->get_result();
-
 
 if (password_verify($password, $user['password'])) {
     $user = $result->fetch_assoc();
@@ -45,6 +45,6 @@ if (password_verify($password, $user['password'])) {
 
 $_SESSION['alert'] = ['type' => 'error', 'message' => 'Usuario o contraseña inválidos'];
 $_SESSION['old'] = ['usuario' => $usuario];
-header('Location: ../views/login.php');
+header('Location: ../views/admins.php');
 exit;
 ?>
