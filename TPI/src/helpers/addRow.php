@@ -86,6 +86,6 @@ function insertRow(mysqli $conn, string $table): void {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tabla'])) {
     $conn = connectDB();
     insertRow($conn, $_POST['tabla']);
-    header("Location: /taller1/TPI/src/views/dashboard.php?tabla=" . urlencode($_POST['tabla']));
-    exit;
+    // header("Location: /taller1/TPI/src/views/dashboard.php?tabla=" . urlencode($_POST['tabla']));
+    // exit;
 }

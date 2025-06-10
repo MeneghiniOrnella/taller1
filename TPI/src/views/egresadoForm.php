@@ -6,19 +6,16 @@ include_once __DIR__ . '/../components/header.php';
 include_once __DIR__ . '/../components/alert.php';
 include_once __DIR__ . '/../components/form.php';
 include_once __DIR__ . '/../components/footer.php';
-include_once __DIR__ . '/../helpers/sendEmailToAdmins.php';
-include_once __DIR__ . '/../helpers/redirect.php';
-include_once __DIR__ . '/../helpers/renderQueryTable.php';
 
-$datosEnviados = $_SESSION['datosEnviados'] ?? null;
-unset($_SESSION['datosEnviados']);
+$datosEnviados = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tabla']) && $_POST['tabla'] === 'egresados') {
     insertRow($conn, 'egresados');
-    $_SESSION['datosEnviados'] = $_POST;
-    $_SESSION['alert'] = ['type' => 'success', 'message' => 'Egresado agregado correctamente.'];
-    header("Location: " . $_SERVER['PHP_SELF']);
-    exit;
+    $datosEnviados = $_POST;
+    $alert = ['type' => 'success', 'message' => 'Egresado agregado correctamente.'];
+} else {
+    $alert = $_SESSION['alert'] ?? null;
+    unset($_SESSION['alert']);
 }
 
 $alert = $_SESSION['alert'] ?? null;
@@ -64,7 +61,7 @@ renderHeader();
 </main>
 
 <?php
-//sendEmailToAdmins($conn, $nombre, $apellido, $email, $telefono);
+// sendEmailToAdmins($conn, $nombre, $apellido, $email, $telefono);
 
 renderFooter(); 
 ?>
