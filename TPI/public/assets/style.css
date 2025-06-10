@@ -4,13 +4,19 @@
 npx @tailwindcss/cli -i ./public/assets/style.css -o ./public/assets/output.css --watch
 https://tailwindcss.com/docs/installation/tailwind-cli
 */
+/* 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    background-color: rgb(165, 204, 191);
+}*/
 
 .links {
-    color: #25eb56; /* Tailwind's blue-600 */
+    color: #25eb56;
     text-decoration: none;
 }
 
-/* styles.css */
 .alert-box {
     padding: 1rem 1.5rem;
     border-radius: 8px;

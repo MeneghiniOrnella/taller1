@@ -1,6 +1,6 @@
 <?php
 function createTables(mysqli $conn): void {
-    mysqli_query($conn, "DROP TABLE IF EXISTS egresados, carreras, emails_admin, admins");
+    // mysqli_query($conn, "DROP TABLE IF EXISTS egresados, carreras, emails_admin, admins");
 
     $schemas = [
         "carreras" => [

@@ -3,7 +3,7 @@ session_start();
 
 // include_once 'src/helpers/config.php';
 include_once 'src/db/db.php';
-include_once 'src/helpers/deleteRow.php';
+// include_once 'src/helpers/deleteRow.php';
 include_once 'src/helpers/addRow.php';
 include_once 'src/helpers/editRow.php';
 include_once 'src/db/init_data.php';
@@ -12,8 +12,8 @@ include_once 'src/components/header.php';
 include_once 'src/helpers/renderQueryTable.php';
 include_once 'src/components/footer.php';
 
+insertInitialData($conn);
 renderHeader();
-
 ?>
 
 <main class="p-6">
@@ -26,4 +26,4 @@ renderHeader();
     </a>
 </main>
 
-<?php renderFooter();
+<?php renderFooter(); ?>

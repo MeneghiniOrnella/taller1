@@ -9,17 +9,34 @@ include_once __DIR__ . '/../components/footer.php';
 
 $datosEnviados = null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tabla']) && $_POST['tabla'] === 'egresados') {
-    insertRow($conn, 'egresados');
-    $datosEnviados = $_POST;
-    $alert = ['type' => 'success', 'message' => 'Egresado agregado correctamente.'];
-} else {
-    $alert = $_SESSION['alert'] ?? null;
-    unset($_SESSION['alert']);
-}
+print_r($_POST);
 
-$alert = $_SESSION['alert'] ?? null;
-unset($_SESSION['alert']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tabla']) && $_POST['tabla'] === 'egresados') {
+    // Campos requeridos
+    $camposRequeridos = ['nombre', 'apellido', 'matricula', 'email', 'carrera_id'];
+
+    $faltantes = [];
+    foreach ($camposRequeridos as $campo) {
+        if (empty($_POST[$campo])) {
+            $faltantes[] = $campo;
+        }
+    }
+
+    if (!empty($faltantes)) {
+        $alert = [
+            'type' => 'error',
+            'message' => 'Faltan completar los siguientes campos obligatorios: ' . implode(', ', $faltantes)
+        ];
+    } else {
+        try {
+            insertRow($conn, 'egresados');
+            $datosEnviados = $_POST;
+            $alert = ['type' => 'success', 'message' => 'Egresado agregado correctamente.'];
+        } catch (Exception $e) {
+            $alert = ['type' => 'error', 'message' => 'Error al insertar: ' . $e->getMessage()];
+        }
+    }
+}
 
 renderHeader();
 ?>
