@@ -23,7 +23,7 @@
                             </button>
                         </form>
                         <a href="?tabla=<?= $table ?>&edit_id=<?= $row[0] ?>" 
-                           class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+                           class="link">
                            Editar
                         </a>
                     </td>

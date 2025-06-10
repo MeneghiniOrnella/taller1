@@ -17,11 +17,11 @@ renderHeader();
 ?>
 
 <main class="p-6">
-    <a href="src/views/login.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <a href="src/views/login.php" class="link">
         Iniciar sesión
     </a>
     <div class="py-4 px-4"></div>
-    <a href="src/views/egresadoForm.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <a href="src/views/egresadoForm.php" class="link">
         Registrar nuevo egresado
     </a>
 </main>

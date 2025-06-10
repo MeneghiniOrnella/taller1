@@ -12,7 +12,7 @@ function insertInitialData(mysqli $conn): void {
             'Tec. en Administración de Empresas',
         ];
         foreach ($carreras as $nombre) {
-            $stmt = mysqli_prepare($conn, "INSERT INTO carreras (nombre) VALUES (?)");
+            $stmt = mysqli_prepare($conn, "INSERT IGNORE INTO carreras (nombre) VALUES (?)");
             mysqli_stmt_bind_param($stmt, 's', $nombre);
             mysqli_stmt_execute($stmt);
         }

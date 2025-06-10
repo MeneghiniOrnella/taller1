@@ -18,7 +18,7 @@
                 <div class="space-x-4 flex items-center">
                     <?php if (!empty($navItems) && is_array($navItems)): ?>
                         <?php foreach ($navItems as $label => $href): ?>
-                            <a href="<?= $href ?>" class="text-white hover:text-blue-100 font-medium transition duration-200">
+                            <a href="<?= $href ?>" class="link">
                                 <?= $label ?>
                             </a>
                         <?php endforeach; ?>

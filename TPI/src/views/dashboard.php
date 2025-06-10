@@ -16,8 +16,8 @@ include_once __DIR__ . '/../components/footer.php';
 
 renderHeader();
 
-echo "<h1>Bienvenido!!!</h1>";
-echo "<a href='logout.php' class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>Cerrar sesión</a>";
+// echo "<h1>Bienvenido!!!</h1>";
+echo "<a href='logout.php' class='link bg-red-500 hover:bg-red-700'>Cerrar sesión</a>";
 
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     if (isset($_POST['delete_id'], $_POST['tabla'])) {

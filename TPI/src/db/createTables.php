@@ -1,7 +1,5 @@
 <?php
 function createTables(mysqli $conn): void {
-    // mysqli_query($conn, "DROP TABLE IF EXISTS egresados, carreras, emails_admin, admins");
-
     $schemas = [
         "carreras" => [
             "id INT AUTO_INCREMENT PRIMARY KEY",
@@ -11,7 +9,7 @@ function createTables(mysqli $conn): void {
             "id INT AUTO_INCREMENT PRIMARY KEY",
             "nombre VARCHAR(30) NOT NULL",
             "apellido VARCHAR(30) NOT NULL",
-            "matricula INT NOT NULL",
+            "matricula INT NOT NULL UNIQUE",
             "email VARCHAR(50) NOT NULL",
             "telefono BIGINT NOT NULL",
             "carrera_id INT NOT NULL",

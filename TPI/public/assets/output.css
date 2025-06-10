@@ -17,7 +17,6 @@
     --color-green-600: oklch(62.7% 0.194 149.214);
     --color-blue-50: oklch(97% 0.014 254.604);
     --color-blue-100: oklch(93.2% 0.032 255.585);
-    --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-gray-50: oklch(98.5% 0.002 247.839);
@@ -356,9 +355,6 @@
   .border-yellow-500 {
     border-color: var(--color-yellow-500);
   }
-  .bg-blue-500 {
-    background-color: var(--color-blue-500);
-  }
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
@@ -552,13 +548,6 @@
       }
     }
   }
-  .hover\:text-blue-100 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-blue-100);
-      }
-    }
-  }
   .hover\:text-gray-200 {
     &:hover {
       @media (hover: hover) {
@@ -573,9 +562,30 @@
     }
   }
 }
-.links {
-  color: #25eb56;
+button, .link {
+  background-color: #2727ca;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
   text-decoration: none;
+  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+.link:hover {
+  background-color: #172a7c;
+}
+@keyframes background-color {
+  from {
+    background-color: #1f3183;
+  }
+  to {
+    background-color: #172a7c;
+  }
 }
 .alert-box {
   padding: 1rem 1.5rem;
