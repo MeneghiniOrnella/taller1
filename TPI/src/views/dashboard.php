@@ -74,13 +74,13 @@ try {
         <?php
         $table = $_GET['tabla'] ?? null;
         if ($table === 'egresados') {
-            include 'src/views/egresados.php';
+            include __DIR__ . '/egresados.php';
         } elseif ($table === 'admins') {
-            include 'src/views/admins.php';
+            include __DIR__ . '/admins.php';
         } elseif ($table === 'carreras') {
-            include 'src/views/carreras.php';
+            include __DIR__ . '/carreras.php';
         } elseif ($table === 'emails_admin') {
-            include 'src/views/emails_admin.php';
+            include __DIR__ . '/emails_admin.php';
         } else {
             echo "<p>Seleccione una tabla para gestionar.</p>";
         }
