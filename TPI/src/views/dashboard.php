@@ -1,8 +1,9 @@
 <?php
 session_start();
-
-echo "<h1>Bienvenido!!!</h1>";
-echo "<a href='logout.php'>Cerrar sesión</a>";
+// if (!isset($_SESSION['usuario'])) {
+//     header("Location: login.php");
+//     exit;
+// }
 
 include_once __DIR__ . '/../db/db.php';
 include_once __DIR__ . '/../helpers/deleteRow.php';
@@ -13,6 +14,11 @@ include_once __DIR__ . '/../components/alert.php';
 include_once __DIR__ . '/../components/header.php';
 include_once __DIR__ . '/../helpers/renderQueryTable.php';
 include_once __DIR__ . '/../components/footer.php';
+
+renderHeader();
+
+echo "<h1>Bienvenido!!!</h1>";
+echo "<a href='logout.php' class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>Cerrar sesión</a>";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_id'], $_POST['tabla'])) {
@@ -41,8 +47,6 @@ try {
 } catch (Exception $e) {
     $alert = ['type' => 'error', 'message' => $e->getMessage()];
 }
-
-renderHeader();
 ?>
 
 <main class="p-6">

@@ -54,6 +54,6 @@ function insertInitialData(mysqli $conn): void {
         mysqli_stmt_execute($stmt);
 
         // NO ESTA FUNCIONANDO
-        // sendEmailToAdmins($conn, $nombre, $apellido, $email);
+        // sendEmailToAdmins($conn, $nombre, $apellido, $email, $telefono);
     }
 }

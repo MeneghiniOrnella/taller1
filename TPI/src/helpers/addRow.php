@@ -50,7 +50,16 @@ function insertRow(mysqli $conn, string $table): void {
             break;
 
         case 'admins':
-            $stmt = mysqli_prepare($conn, "INSERT INTO admins (usuario, password) VALUES ('usuario', 'password')");
+            $usuario = $_POST['usuario'] ?? '';
+            $password = $_POST['password'] ?? '';
+
+            if (empty($usuario) || empty($password)) {
+                echo "<p class='text-red-600'>Faltan datos del administrador.</p>";
+                return;
+            }
+
+            $stmt = mysqli_prepare($conn, "INSERT INTO admins (usuario, password) VALUES (?, ?)");
+            mysqli_stmt_bind_param($stmt, "ss", $usuario, $password);
             break;
 
         default:
@@ -77,6 +86,6 @@ function insertRow(mysqli $conn, string $table): void {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tabla'])) {
     $conn = connectDB();
     insertRow($conn, $_POST['tabla']);
-    // header("Location: /taller1/TPI/index.php?tabla=" . urlencode($_POST['tabla']));
-    // exit;
+    header("Location: /taller1/TPI/src/views/dashboard.php?tabla=" . urlencode($_POST['tabla']));
+    exit;
 }
