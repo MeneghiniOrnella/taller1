@@ -9,10 +9,9 @@ include_once __DIR__ . '/../components/footer.php';
 
 $datosEnviados = null;
 
-print_r($_POST);
+// print_r($_POST);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tabla']) && $_POST['tabla'] === 'egresados') {
-    // Campos requeridos
     $camposRequeridos = ['nombre', 'apellido', 'matricula', 'email', 'carrera_id'];
 
     $faltantes = [];
@@ -58,9 +57,25 @@ renderHeader();
             ['name' => 'email', 'label' => 'Email', 'type' => 'email', 'required' => true],
             ['name' => 'telefono', 'label' => 'Teléfono', 'type' => 'text'],
             ['name' => 'carrera_id', 'label' => 'Carrera ID', 'type' => 'number', 'required' => true],
-            ['name' => 'estado', 'label' => 'Estado'],
         ]
     ]);
+
+    if (!empty($faltantes)) {
+        $alert = [
+            'type' => 'error',
+            'message' => 'Faltan completar los siguientes campos obligatorios: ' . implode(', ', $faltantes)
+        ];
+    } else {
+        try {
+            $_POST['estado'] = 'pendiente';
+
+            insertRow($conn, 'egresados');
+            $datosEnviados = $_POST;
+            $alert = ['type' => 'success', 'message' => 'Egresado agregado correctamente.'];
+        } catch (Exception $e) {
+            $alert = ['type' => 'error', 'message' => 'Error al insertar: ' . $e->getMessage()];
+        }
+    }
     ?>
 
     <?php if (!empty($datosEnviados)): ?>
