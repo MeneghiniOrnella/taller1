@@ -1,7 +1,8 @@
 <?php
-include_once(__DIR__ . '/../components/table.php');
+include_once __DIR__ . "/../components/table.php";
 
-function renderQueryTable($conn, $query, $headers, $rowFormatter = null, $table) {
+function renderQueryTable($conn, $query, $headers, $rowFormatter = null, $table)
+{
     $res = mysqli_query($conn, $query);
     if (!$res) {
         die("Error en la consulta: " . mysqli_error($conn));

@@ -1,5 +1,6 @@
 <?php
-function updateRow($conn, string $table, array $data, string $campoId = 'id', $id = null) {
+function updateRow($conn, string $table, array $data, string $campoId = "id", $id = null)
+{
     if ($id === null) {
         echo "<p class='text-red-600'>ID no proporcionado para la actualización.</p>";
         return;
@@ -18,8 +19,8 @@ function updateRow($conn, string $table, array $data, string $campoId = 'id', $i
             echo "<p class='text-red-600'>Campo inválido: $campo</p>";
             return;
         }
-        
-        $valorEscapado = mysqli_real_escape_string($conn, (string)$valor);
+
+        $valorEscapado = mysqli_real_escape_string($conn, (string) $valor);
         $setParts[] = "`$campo` = '$valorEscapado'";
     }
 

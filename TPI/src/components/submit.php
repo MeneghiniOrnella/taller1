@@ -1,10 +1,10 @@
 <?php
-include('../utils/db.php');
-include('helpers/validate_fields.php');
-include('helpers/handle_redirect.php');
+include "../utils/db.php";
+include "helpers/validate_fields.php";
+include "helpers/handle_redirect.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $campos = ['nombre', 'apellido', 'carrera', 'matricula', 'email', 'telefono'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $campos = ["nombre", "apellido", "carrera", "matricula", "email", "telefono"];
     $datos = validateFields($campos, $_POST);
 
     // ESTO ME PARECE QUE NO VA
@@ -19,13 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (mysqli_stmt_execute($stmt)) {
     $admins = mysqli_query($connection, "SELECT email FROM administradores");
     $asunto = "Nuevo registro de egresado";
-    $mensaje = "Se ha registrado un nuevo egresado: {$datos['nombre']} {$datos['apellido']}, Matricula: {$datos['matricula']}";
+    $mensaje = "Se ha registrado un nuevo egresado: {$datos["nombre"]} {$datos["apellido"]}, Matricula: {$datos["matricula"]}";
     $headers = "From: sistema@instituto.com";
 
     while ($admin = mysqli_fetch_assoc($admins)) {
-        mail($admin['email'], $asunto, $mensaje, $headers);
+        mail($admin["email"], $asunto, $mensaje, $headers);
     }
 
-    redirectWith('../registro.php', 'success', 1);
+    redirectWith("../registro.php", "success", 1);
 }
-

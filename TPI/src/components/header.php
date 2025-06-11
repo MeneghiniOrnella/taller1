@@ -1,10 +1,12 @@
-<?php function renderHeader($navItems) { ?>
+<?php function renderHeader($navItems)
+{
+    ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $pageTitle ?? 'Administración de Egresados' ?></title>
+    <title><?= $pageTitle ?? "Administración de Egresados" ?></title>
     <link rel="icon" href="/taller1/TPI/public/assets/favicon.ico" type="image/x-icon">
     <link href="/taller1/TPI/public/assets/output.css" rel="stylesheet">
 </head>
@@ -25,4 +27,5 @@
             </div>
         </div>
     </nav>
-<?php } ?>
+<?php
+} ?>
