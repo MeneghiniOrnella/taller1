@@ -1,5 +1,5 @@
 <?php
-function editRow($conn, string $table, array $data, string $campoId = 'id', $id = null) {
+function updateRow($conn, string $table, array $data, string $campoId = 'id', $id = null) {
     if ($id === null) {
         echo "<p class='text-red-600'>ID no proporcionado para la actualización.</p>";
         return;

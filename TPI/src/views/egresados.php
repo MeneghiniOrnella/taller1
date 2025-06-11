@@ -8,13 +8,13 @@ renderForm([
     'submit' => 'Agregar',
     'fields' => [
         ['name' => 'tabla', 'type' => 'hidden', 'value' => 'egresados'],
-        ['name' => 'nombre', 'label' => 'Nombre', 'required' => true],
-        ['name' => 'apellido', 'label' => 'Apellido', 'required' => true],
-        ['name' => 'matricula', 'label' => 'Matrícula', 'type' => 'number', 'required' => true],
-        ['name' => 'email', 'label' => 'Email', 'type' => 'email', 'required' => true],
-        ['name' => 'telefono', 'label' => 'Teléfono', 'type' => 'text'],
+        ['name' => 'nombre',     'label' => 'Nombre',   'required' => true],
+        ['name' => 'apellido',   'label' => 'Apellido', 'required' => true],
+        ['name' => 'matricula',  'label' => 'Matrícula',  'type' => 'number', 'required' => true],
+        ['name' => 'email',      'label' => 'Email',      'type' => 'email',  'required' => true],
+        ['name' => 'telefono',   'label' => 'Teléfono',   'type' => 'text'],
         ['name' => 'carrera_id', 'label' => 'Carrera ID', 'type' => 'number', 'required' => true],
-        ['name' => 'estado', 'label' => 'Estado', 'required' => false],
+        ['name' => 'estado',     'label' => 'Estado',    'required' => false],
     ]
 ]);
 

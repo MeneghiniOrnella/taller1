@@ -12,7 +12,7 @@
             <?php foreach($rows as $row) { ?>
                 <tr class='hover:bg-blue-50 transition divide-x divide-gray-200'>
                     <?php for ($i = 0; $i < count($row); $i++) { ?>
-                        <td class='px-6 py-4'><?= htmlspecialchars($row[$i]) ?></td>
+                        <td class='px-6 py-4 capitalize'><?= htmlspecialchars($row[$i]) ?></td>
                     <?php } ?>
                     <td class='px-6 py-4 text-center space-x-2'>
                         <form action="" method="post" style="display:inline;" onsubmit="return confirm('¿Desea borrar este registro?');">

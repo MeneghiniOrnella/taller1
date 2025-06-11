@@ -4,16 +4,19 @@ require_once __DIR__ . '/../components/form.php';
 require_once __DIR__ . '/../components/footer.php';
 global $conn;
 
-renderHeader('Inicio de sesión', 'login');
+$navItems = [
+    'Inicio' => '/taller1/TPI/index.php',
+];
+renderHeader($navItems);
 
 renderForm([
     'action' => 'dashboard.php?tabla=admins',
     'method' => 'post',
     'title' => 'Inicio de sesión',
-    'submit' => 'Agregar',
+    'submit' => 'Ingresar',
     'fields' => [
         ['name' => 'tabla', 'type' => 'hidden', 'value' => 'admins'],
-        ['name' => 'usuario', 'label' => 'Usuario', 'required' => true],
+        ['name' => 'usuario',  'label' => 'Usuario',    'required' => true],
         ['name' => 'password', 'label' => 'Contraseña', 'required' => true],
     ]
 ]);

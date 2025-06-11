@@ -37,7 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tabla']) && $_POST['t
     }
 }
 
-renderHeader();
+$navItems = [
+    'Inicio'         => '/taller1/TPI/index.php',
+    'Iniciar sesión' => '/taller1/TPI/src/views/login.php',
+    'Egresados'      => '/taller1/TPI/src/views/login.php',
+];
+renderHeader($navItems);
 ?>
 
 <main class="p-6">
@@ -51,11 +56,11 @@ renderHeader();
         'submit' => 'Agregar Egresado',
         'tabla' => 'egresados',
         'fields' => [
-            ['name' => 'nombre', 'label' => 'Nombre', 'required' => true],
-            ['name' => 'apellido', 'label' => 'Apellido', 'required' => true],
-            ['name' => 'matricula', 'label' => 'Matrícula', 'type' => 'number', 'required' => true],
-            ['name' => 'email', 'label' => 'Email', 'type' => 'email', 'required' => true],
-            ['name' => 'telefono', 'label' => 'Teléfono', 'type' => 'text'],
+            ['name' => 'nombre',     'label' => 'Nombre',   'required' => true],
+            ['name' => 'apellido',   'label' => 'Apellido', 'required' => true],
+            ['name' => 'matricula',  'label' => 'Matrícula',  'type' => 'number', 'required' => true],
+            ['name' => 'email',      'label' => 'Email',      'type' => 'email',  'required' => true],
+            ['name' => 'telefono',   'label' => 'Teléfono',   'type' => 'text'],
             ['name' => 'carrera_id', 'label' => 'Carrera ID', 'type' => 'number', 'required' => true],
         ]
     ]);
@@ -92,7 +97,7 @@ renderHeader();
 </main>
 
 <?php
-// sendEmailToAdmins($conn, $nombre, $apellido, $email, $telefono);
+sendEmailToAdmins($conn, $nombre, $apellido, $email, $telefono);
 
-renderFooter(); 
+renderFooter();
 ?>
