@@ -4,7 +4,7 @@ session_start();
 include_once "src/db/db.php";
 include_once "src/helpers/addRow.php";
 include_once "src/helpers/updateRow.php";
-include_once 'src/helpers/deleteRow.php';
+include_once "src/helpers/deleteRow.php";
 include_once "src/db/init_data.php";
 include_once "src/components/alert.php";
 include_once "src/components/header.php";

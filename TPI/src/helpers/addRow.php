@@ -98,7 +98,10 @@ function insertRow(mysqli $conn, string $table): void
     }
 
     if (!$stmt) {
-        $alert = ["type" => "error", "message" => "Error al preparar la inserción: " . mysqli_error($conn)];
+        $alert = [
+            "type" => "error",
+            "message" => "Error al preparar la inserción: " . mysqli_error($conn),
+        ];
         return;
     }
     if (!mysqli_stmt_execute($stmt)) {

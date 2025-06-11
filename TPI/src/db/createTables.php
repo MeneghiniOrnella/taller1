@@ -29,7 +29,10 @@ function createTables(mysqli $conn): void
         // $sql = "CREATE TABLE IF NOT EXISTS `$table` (\n" . implode(",\n", $fields) . "\n)";
         try {
             $sql = "CREATE TABLE IF NOT EXISTS `$table` (\n" . implode(",\n", $fields) . "\n)";
-            $alert = ["type" => "success", "message" => "Tablas creadas e inicializadas correctamente."];
+            $alert = [
+                "type" => "success",
+                "message" => "Tablas creadas e inicializadas correctamente.",
+            ];
         } catch (Exception $e) {
             $alert = ["type" => "error", "message" => $e->getMessage()];
         }

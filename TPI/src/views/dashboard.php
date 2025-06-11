@@ -25,16 +25,19 @@ renderHeader($navItems);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["delete_id"], $_POST["tabla"])) {
+        // DELETE
         $id = (int) $_POST["delete_id"];
         $tabla = $_POST["tabla"];
         deleteRow($conn, $tabla, $id);
         $_SESSION["alert"] = ["type" => "success", "message" => "Fila eliminada correctamente."];
     } elseif (isset($_POST["tabla"])) {
+        // CREATE
         insertRow($conn, $_POST["tabla"]);
         $_SESSION["alert"] = ["type" => "success", "message" => "Fila insertada correctamente."];
     } elseif (isset($_POST["update_id"], $_POST["tabla"])) {
+        // UPDATE
         $id = (int) $_POST["update_id"];
-        updateRow($conn, $id, $_POST["tabla"]);
+        updateRow($conn, $_POST["tabla"], $_POST, "id", $id);
         $_SESSION["alert"] = ["type" => "success", "message" => "Fila actualizada correctamente."];
     } else {
         $_SESSION["alert"] = ["type" => "error", "message" => "Acción no soportada."];

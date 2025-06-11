@@ -1,4 +1,7 @@
 <?php
+
+
+
 function deleteRow(mysqli $conn, string $table, int $id, string $campoId = "id")
 {
     if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {
@@ -8,7 +11,10 @@ function deleteRow(mysqli $conn, string $table, int $id, string $campoId = "id")
 
     $stmt = mysqli_prepare($conn, "DELETE FROM `$table` WHERE `$campoId` = ?");
     if (!$stmt) {
-        $alert = ["type" => "error", "message" => "Error al preparar la consulta: " . mysqli_error($conn)];
+        $alert = [
+            "type" => "error",
+            "message" => "Error al preparar la consulta: " . mysqli_error($conn),
+        ];
         return;
     }
 
