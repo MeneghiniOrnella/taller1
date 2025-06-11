@@ -30,12 +30,12 @@ function updateRow($conn, string $table, array $data, string $campoId = "id", $i
     $res = mysqli_query($conn, $sql);
 
     if (!$res) {
-        echo "<p class='text-red-600'>Error al ejecutar UPDATE: " . mysqli_error($conn) . "</p>";
+        $alert = ["type" => "success", "message" => "Error al ejecutar UPDATE: " . mysqli_error($conn)];
     } else {
         if (mysqli_affected_rows($conn) === 0) {
-            echo "<p class='text-yellow-600'>No se modificó ningún registro con ID = $id (puede que no exista o los datos sean idénticos).</p>";
+            $alert = ["type" => "success", "message" => "No se modificó ningún registro con ID = $id (puede que no exista o los datos sean idénticos)."];
         } else {
-            echo "<p class='text-green-600'>Registro con ID = $id actualizado correctamente.</p>";
+            $alert = ["type" => "success", "message" => "Registro con ID = $id actualizado correctamente."];
         }
     }
 }

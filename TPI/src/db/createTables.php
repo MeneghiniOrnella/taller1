@@ -26,9 +26,12 @@ function createTables(mysqli $conn): void
     ];
 
     foreach ($schemas as $table => $fields) {
-        $sql = "CREATE TABLE IF NOT EXISTS `$table` (\n" . implode(",\n", $fields) . "\n)";
-        if (!mysqli_query($conn, $sql)) {
-            throw new Exception("❌ Error al crear '$table': " . mysqli_error($conn));
+        // $sql = "CREATE TABLE IF NOT EXISTS `$table` (\n" . implode(",\n", $fields) . "\n)";
+        try {
+            $sql = "CREATE TABLE IF NOT EXISTS `$table` (\n" . implode(",\n", $fields) . "\n)";
+            $alert = ["type" => "success", "message" => "Tablas creadas e inicializadas correctamente."];
+        } catch (Exception $e) {
+            $alert = ["type" => "error", "message" => $e->getMessage()];
         }
     }
 }

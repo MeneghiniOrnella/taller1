@@ -31,12 +31,12 @@ function insertRow(mysqli $conn, string $table): void
             $carrera_id = isset($_POST["carrera_id"]) ? intval($_POST["carrera_id"]) : 0;
             $estado = $_POST["estado"] ?? "pendiente";
             if ($carrera_id <= 0) {
-                echo "<p class='text-red-600'>Falta seleccionar carrera válida.</p>";
+                $alert = ["type" => "error", "message" => "Falta seleccionar carrera válida."];
                 return;
             }
             $result = mysqli_query($conn, "SELECT id FROM carreras WHERE id = $carrera_id");
             if (!$result || mysqli_num_rows($result) === 0) {
-                echo "<p class='text-red-600'>La carrera seleccionada no existe.</p>";
+                $alert = ["type" => "error", "message" => "La carrera seleccionada no existe."];
                 return;
             }
             $stmt = mysqli_prepare(
@@ -74,7 +74,7 @@ function insertRow(mysqli $conn, string $table): void
             $usuario = $_POST["usuario"] ?? "";
             $password = $_POST["password"] ?? "";
             if (empty($usuario) || empty($password)) {
-                echo "<p class='text-red-600'>Faltan datos del administrador.</p>";
+                $alert = ["type" => "error", "message" => "Faltan datos del administrador."];
                 return;
             }
             $stmt = mysqli_prepare(
@@ -93,14 +93,12 @@ function insertRow(mysqli $conn, string $table): void
             break;
 
         default:
-            echo "<p class='text-red-600'>Tabla no soportada para inserción.</p>";
+            $alert = ["type" => "error", "message" => "Tabla no soportada para inserción."];
             return;
     }
 
     if (!$stmt) {
-        echo "<p class='text-red-600'>Error al preparar la inserción: " .
-            mysqli_error($conn) .
-            "</p>";
+        $alert = ["type" => "error", "message" => "Error al preparar la inserción: " . mysqli_error($conn)];
         return;
     }
     if (!mysqli_stmt_execute($stmt)) {

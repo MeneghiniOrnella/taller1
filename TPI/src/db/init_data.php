@@ -1,6 +1,4 @@
 <?php
-// require_once "email.php";
-
 function insertInitialData(mysqli $conn): void
 {
     $resCarreras = mysqli_query($conn, "SELECT COUNT(*) as total FROM carreras");
@@ -87,8 +85,6 @@ function insertInitialData(mysqli $conn): void
                 $estado
             );
             mysqli_stmt_execute($stmtEgresados);
-            // NO ESTA FUNCIONANDO
-            // sendEmailToAdmins($conn, $nombre, $apellido, $email, $telefono);
         }
     }
 }

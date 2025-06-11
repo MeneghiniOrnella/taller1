@@ -18,6 +18,7 @@ if ($admin && password_verify($datos["password"], $admin["password"])) {
     $_SESSION["admin"] = $admin["email"];
     header("Location: /taller1/TPI/views/dashboard.php");
 } else {
-    echo "Usuario o contraseña incorrectos.";
-    //redirectWith('../views/auth/login.php', 'error', 1);
+    $alert = ["type" => "error", "message" => "Usuario o contraseña incorrectos."];
+    redirectWith('../views/auth/login.php', 'error', 1);
 }
+

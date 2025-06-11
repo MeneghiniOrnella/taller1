@@ -1,6 +1,11 @@
 <?php
-function sendEmailToAdmins(mysqli $conn, string $nombre, string $apellido, string $email, int $telefono): void
-{
+function sendEmailToAdmins(
+    mysqli $conn,
+    string $nombre,
+    string $apellido,
+    string $email,
+    int $telefono
+): void {
     $subject = "Nuevo egresado registrado";
     $message = "<html>
                 <body>

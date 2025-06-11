@@ -113,7 +113,7 @@ renderHeader($navItems);
 </main>
 
 <?php
-if(!empty($datosEnviados)) {
+if (!empty($datosEnviados)) {
     $nombre = $datosEnviados["nombre"] ?? "";
     $apellido = $datosEnviados["apellido"] ?? "";
     $email = $datosEnviados["email"] ?? "";
@@ -124,5 +124,6 @@ if ($nombre && $apellido && $email && $telefono) {
 }
 
 renderFooter();
+
 
 ?>

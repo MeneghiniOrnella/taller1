@@ -18,11 +18,10 @@ $navItems = [
     "Inicio" => "/taller1/TPI/index.php",
     "Cerrar sesión" => "/taller1/TPI/src/views/logout.php",
 ];
+
 renderHeader($navItems);
 
 // print_r($_POST);
-
-echo "<a href='logout.php' class='link bg-red-500 hover:bg-red-700'>Cerrar sesión</a>";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["delete_id"], $_POST["tabla"])) {
