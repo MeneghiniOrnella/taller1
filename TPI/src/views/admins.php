@@ -2,7 +2,7 @@
 global $conn;
 
 renderForm([
-    'action' => 'index.php?tabla=admins',
+    'action' => 'dashboard.php?tabla=admins',
     'method' => 'post',
     'title' => 'Agregar nuevo usuario administrador',
     'submit' => 'Agregar',

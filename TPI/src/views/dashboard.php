@@ -6,7 +6,7 @@ session_start();
 // }
 
 include_once __DIR__ . '/../db/db.php';
-// include_once __DIR__ . '/../helpers/deleteRow.php';
+include_once __DIR__ . '/../helpers/deleteRow.php';
 include_once __DIR__ . '/../helpers/addRow.php';
 include_once __DIR__ . '/../helpers/editRow.php';
 include_once __DIR__ . '/../components/alert.php';
@@ -16,24 +16,21 @@ include_once __DIR__ . '/../components/footer.php';
 
 renderHeader();
 
-// echo "<h1>Bienvenido!!!</h1>";
+print_r($_POST);
+
 echo "<a href='logout.php' class='link bg-red-500 hover:bg-red-700'>Cerrar sesión</a>";
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     if (isset($_POST['delete_id'], $_POST['tabla'])) {
-//         $id = (int)$_POST['delete_id'];
-//         $tabla = $_POST['tabla'];
-//         deleteRow($conn, $tabla, $id);
-//         $_SESSION['alert'] = ['type' => 'success', 'message' => 'Fila eliminada correctamente.'];
-//         header("Location: index.php?tabla=" . urlencode($tabla));
-//         exit;
-//     } elseif (isset($_POST['tabla'])) {
-//         insertRow($conn, $_POST['tabla']);
-//         $_SESSION['alert'] = ['type' => 'success', 'message' => 'Fila insertada correctamente.'];
-//         header("Location: index.php?tabla=" . urlencode($_POST['tabla']));
-//         exit;
-//     }
-// }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['delete_id'], $_POST['tabla'])) {
+        $id = (int)$_POST['delete_id'];
+        $tabla = $_POST['tabla'];
+        deleteRow($conn, $tabla, $id);
+        $_SESSION['alert'] = ['type' => 'success', 'message' => 'Fila eliminada correctamente.'];
+    } elseif (isset($_POST['tabla'])) {
+        insertRow($conn, $_POST['tabla']);
+        $_SESSION['alert'] = ['type' => 'success', 'message' => 'Fila insertada correctamente.'];
+    }
+}
 
 if ($alert && isset($alert['type'], $alert['message'])) {
     renderAlert($alert['type'], $alert['message']);

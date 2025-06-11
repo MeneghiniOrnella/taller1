@@ -2,7 +2,7 @@
 global $conn;
 
 renderForm([
-    'action' => 'index.php?tabla=carreras',
+    'action' => 'dashboard.php?tabla=carreras',
     'method' => 'post',
     'title' => 'Agregar nueva carrera',
     'submit' => 'Agregar',

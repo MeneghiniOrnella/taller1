@@ -2,7 +2,7 @@
 global $conn;
 
 renderForm([
-    'action' => 'index.php?tabla=emails_admin',
+    'action' => 'dashboard.php?tabla=emails_admin',
     'method' => 'post',
     'title' => 'Agregar nuevo email de administrador',
     'submit' => 'Agregar',

@@ -12,11 +12,14 @@ function insertRow(mysqli $conn, string $table): void {
 
     switch ($table) {
         case 'carreras':
-            $stmt = mysqli_prepare($conn, "INSERT INTO carreras (nombre) VALUES ('Nueva carrera')");
+            $nombreCarreras = $_POST['nombre'] ?? '';
+            $stmt = mysqli_prepare($conn, 
+                "INSERT IGNORE INTO carreras (nombre) 
+                VALUES (?)");
+            mysqli_stmt_bind_param($stmt, "s", $nombreCarreras);
             break;
 
         case 'egresados':
-            // Recibir datos del formulario
             $nombre = $_POST['nombre'] ?? '';
             $apellido = $_POST['apellido'] ?? '';
             $matricula = $_POST['matricula'] ?? 0;
@@ -24,41 +27,42 @@ function insertRow(mysqli $conn, string $table): void {
             $telefono = $_POST['telefono'] ?? '';
             $carrera_id = isset($_POST['carrera_id']) ? intval($_POST['carrera_id']) : 0;
             $estado = $_POST['estado'] ?? 'pendiente';
-
             if ($carrera_id <= 0) {
                 echo "<p class='text-red-600'>Falta seleccionar carrera válida.</p>";
                 return;
             }
-
             $result = mysqli_query($conn, "SELECT id FROM carreras WHERE id = $carrera_id");
             if (!$result || mysqli_num_rows($result) === 0) {
                 echo "<p class='text-red-600'>La carrera seleccionada no existe.</p>";
                 return;
             }
-
-            $stmt = mysqli_prepare($conn, "
-                INSERT INTO egresados 
+            $stmt = mysqli_prepare($conn, 
+                "INSERT IGNORE INTO egresados 
                 (nombre, apellido, matricula, email, telefono, carrera_id, estado) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             ");
-
             mysqli_stmt_bind_param($stmt, "ssissis", $nombre, $apellido, $matricula, $email, $telefono, $carrera_id, $estado);
             break;
 
         case 'emails_admin':
-            $stmt = mysqli_prepare($conn, "INSERT INTO emails_admin (email) VALUES ('nuevo@correo.com')");
+            $emailEmails = $_POST['email'] ?? '';
+            $stmt = mysqli_prepare($conn, 
+                "INSERT IGNORE INTO emails_admin (email) 
+                VALUES (?)
+            ");
+            mysqli_stmt_bind_param($stmt, "s", $emailEmails);
             break;
 
         case 'admins':
             $usuario = $_POST['usuario'] ?? '';
             $password = $_POST['password'] ?? '';
-
             if (empty($usuario) || empty($password)) {
                 echo "<p class='text-red-600'>Faltan datos del administrador.</p>";
                 return;
             }
-
-            $stmt = mysqli_prepare($conn, "INSERT INTO admins (usuario, password) VALUES (?, ?)");
+            $stmt = mysqli_prepare($conn, 
+                "INSERT IGNORE INTO admins (usuario, password) 
+                VALUES (?, ?)");
             mysqli_stmt_bind_param($stmt, "ss", $usuario, $password);
             break;
 
@@ -78,11 +82,9 @@ function insertRow(mysqli $conn, string $table): void {
         $_SESSION['alert'] = ['type' => 'success', 'message' => "Fila insertada correctamente."];
     }
 
-
     mysqli_stmt_close($stmt);
 }
 
-// Ejecutar si se llama directamente por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tabla'])) {
     $conn = connectDB();
     insertRow($conn, $_POST['tabla']);

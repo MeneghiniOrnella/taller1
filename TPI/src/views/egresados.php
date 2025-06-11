@@ -2,7 +2,7 @@
 global $conn;
 
 renderForm([
-    'action' => 'index.php?tabla=egresados',
+    'action' => 'dashboard.php?tabla=egresados',
     'method' => 'post',
     'title' => 'Agregar nuevo egresado',
     'submit' => 'Agregar',
