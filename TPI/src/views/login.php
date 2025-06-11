@@ -13,8 +13,8 @@ renderForm([
     'submit' => 'Agregar',
     'fields' => [
         ['name' => 'tabla', 'type' => 'hidden', 'value' => 'admins'],
-        ['name' => 'usuario1', 'label' => 'usuario1', 'required' => true],
-        ['name' => 'contraseña1', 'label' => 'password1', 'required' => true],
+        ['name' => 'usuario', 'label' => 'Usuario', 'required' => true],
+        ['name' => 'password', 'label' => 'Contraseña', 'required' => true],
     ]
 ]);
 
