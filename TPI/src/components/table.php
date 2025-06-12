@@ -28,12 +28,12 @@
                             <form action="" method="post" style="display:inline;" onsubmit="return confirm('¿Desea borrar este registro?');">
                                 <input type="hidden" name="tabla" value="<?= htmlspecialchars($table) ?>">
                                 <input type="hidden" name="delete_id" value="<?= htmlspecialchars($row[0]) ?>">
-                                <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+                                <button type="submit" class="link bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
                                     Borrar
                                 </button>
                             </form>
                             <a href="?tabla=<?= $table ?>&edit_id=<?= $row[0] ?>" 
-                               class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+                               class="link bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
                                Editar
                             </a>
                         <?php endif; ?>

@@ -34,7 +34,7 @@ if (
         ];
     } else {
         try {
-            insertRow($conn, "egresados");
+            addRow($conn, "egresados");
             $datosEnviados = $_POST;
             $alert = ["type" => "success", "message" => "Egresado agregado correctamente."];
         } catch (Exception $e) {
@@ -87,7 +87,7 @@ renderHeader($navItems);
     } else {
         try {
             $_POST["estado"] = "pendiente";
-            insertRow($conn, "egresados");
+            addRow($conn, "egresados");
             $datosEnviados = $_POST;
             $alert = ["type" => "success", "message" => "Egresado agregado correctamente."];
         } catch (Exception $e) {

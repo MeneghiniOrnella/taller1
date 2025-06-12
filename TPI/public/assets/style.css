@@ -9,29 +9,12 @@ button,
 .link {
     /*bg-blue-500hover:;
     bg-blue-700text-whitefont-boldpy-2px-4rounded*/
-    background-color: #2727ca;
     color: white;
     font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
     text-decoration: none;
-    transition: background-color 0.3s ease;
-    -webkit-transition: background-color 0.3s ease;
-    -moz-transition: background-color 0.3s ease;
-    -ms-transition: background-color 0.3s ease;
-    -o-transition: background-color 0.3s ease;
     cursor: pointer;
-}
-.link:hover {
-    background-color: #172a7c;
-}
-@keyframes background-color {
-    from {
-        background-color: #1f3183;
-    }
-    to {
-        background-color: #172a7c;
-    }
 }
 
 .alert-box {

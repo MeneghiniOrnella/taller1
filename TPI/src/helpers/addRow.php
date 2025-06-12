@@ -2,7 +2,7 @@
 require_once __DIR__ . "/../db/connectDB.php";
 require_once __DIR__ . "/../components/form.php";
 
-function insertRow(mysqli $conn, string $table): void
+function addRow(mysqli $conn, string $table): void
 {
     file_put_contents(__DIR__ . "/debug.txt", "Formulario recibido\n", FILE_APPEND);
 
@@ -115,7 +115,7 @@ function insertRow(mysqli $conn, string $table): void
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["tabla"])) {
     $conn = connectDB();
-    insertRow($conn, $_POST["tabla"]);
+    addRow($conn, $_POST["tabla"]);
     // header("Location: /taller1/TPI/src/views/dashboard.php?tabla=" . urlencode($_POST['tabla']));
     // exit;
 }

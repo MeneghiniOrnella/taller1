@@ -32,13 +32,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["alert"] = ["type" => "success", "message" => "Fila eliminada correctamente."];
     } elseif (isset($_POST["tabla"])) {
         // CREATE
-        insertRow($conn, $_POST["tabla"]);
+        addRow($conn, $_POST["tabla"]);
         $_SESSION["alert"] = ["type" => "success", "message" => "Fila insertada correctamente."];
     } elseif (isset($_POST["update_id"], $_POST["tabla"])) {
         // UPDATE
         $id = (int) $_POST["update_id"];
         updateRow($conn, $_POST["tabla"], $_POST, "id", $id);
         $_SESSION["alert"] = ["type" => "success", "message" => "Fila actualizada correctamente."];
+    } elseif (isset($_POST["login_id"], $_POST["tabla"])) {
+        // LOGIN
+        $id = (int) $_POST["login_id"];
+        loginRow($conn, $_POST["tabla"], $_POST, "id", $id);
+        $_SESSION["alert"] = ["type" => "success", "message" => "Datos de ingreso correctos."];
     } else {
         $_SESSION["alert"] = ["type" => "error", "message" => "Acción no soportada."];
     }

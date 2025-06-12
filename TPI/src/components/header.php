@@ -19,7 +19,7 @@
                 </div>
                 <div class="space-x-4 flex items-center">
                     <?php foreach ($navItems as $label => $href): ?>
-                        <a href="<?= $href ?>" class="link">
+                        <a href="<?= $href ?>" class="link hover:bg-green-700">
                             <?= $label ?>
                         </a>
                     <?php endforeach; ?>
