@@ -20,9 +20,15 @@ renderForm([
         $editData ? [["name" => "update_id", "type" => "hidden", "value" => $editData["id"]]] : [],
         [
             ["name" => "tabla", "type" => "hidden", "value" => "emails_admin"],
-            ["name" => "email", "label" => "Email", "type" => "email", "required" => true, "value" => $editData["email"] ?? ""],
+            [
+                "name" => "email",
+                "label" => "Email",
+                "type" => "email",
+                "required" => true,
+                "value" => $editData["email"] ?? "",
+            ],
         ]
-    )
+    ),
 ]);
 
 renderQueryTable(

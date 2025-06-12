@@ -20,15 +20,53 @@ renderForm([
         $editData ? [["name" => "update_id", "type" => "hidden", "value" => $editData["id"]]] : [],
         [
             ["name" => "tabla", "type" => "hidden", "value" => "egresados"],
-            ["name" => "nombre", "label" => "Nombre", "required" => true, "value" => $editData["nombre"] ?? ""],
-            ["name" => "apellido", "label" => "Apellido", "required" => true, "value" => $editData["apellido"] ?? ""],
-            ["name" => "matricula", "label" => "Matrícula", "type" => "number", "required" => true, "value" => $editData["matricula"] ?? ""],
-            ["name" => "email", "label" => "Email", "type" => "email", "required" => true, "value" => $editData["email"] ?? ""],
-            ["name" => "telefono", "label" => "Teléfono", "type" => "text", "value" => $editData["telefono"] ?? ""],
-            ["name" => "carrera_id", "label" => "Carrera ID", "type" => "number", "required" => true, "value" => $editData["carrera_id"] ?? ""],
-            ["name" => "estado", "label" => "Estado", "required" => false, "value" => $editData["estado"] ?? ""],
+            [
+                "name" => "nombre",
+                "label" => "Nombre",
+                "required" => true,
+                "value" => $editData["nombre"] ?? "",
+            ],
+            [
+                "name" => "apellido",
+                "label" => "Apellido",
+                "required" => true,
+                "value" => $editData["apellido"] ?? "",
+            ],
+            [
+                "name" => "matricula",
+                "label" => "Matrícula",
+                "type" => "number",
+                "required" => true,
+                "value" => $editData["matricula"] ?? "",
+            ],
+            [
+                "name" => "email",
+                "label" => "Email",
+                "type" => "email",
+                "required" => true,
+                "value" => $editData["email"] ?? "",
+            ],
+            [
+                "name" => "telefono",
+                "label" => "Teléfono",
+                "type" => "text",
+                "value" => $editData["telefono"] ?? "",
+            ],
+            [
+                "name" => "carrera_id",
+                "label" => "Carrera ID",
+                "type" => "number",
+                "required" => true,
+                "value" => $editData["carrera_id"] ?? "",
+            ],
+            [
+                "name" => "estado",
+                "label" => "Estado",
+                "required" => false,
+                "value" => $editData["estado"] ?? "",
+            ],
         ]
-    )
+    ),
 ]);
 
 renderQueryTable(

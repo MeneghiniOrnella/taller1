@@ -96,7 +96,7 @@ try {
         } elseif ($table === "emails_admin") {
             include __DIR__ . "/emails_admin.php";
         } else {
-            echo "<p>Seleccione una tabla para gestionar.</p>";
+            $alert = ["type" => "error", "message" => "Seleccione una tabla para gestionar."];
         }
         ?>
     </div>

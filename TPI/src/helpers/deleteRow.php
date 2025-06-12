@@ -1,7 +1,5 @@
 <?php
 
-
-
 function deleteRow(mysqli $conn, string $table, int $id, string $campoId = "id")
 {
     if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {

@@ -20,10 +20,20 @@ renderForm([
         $editData ? [["name" => "update_id", "type" => "hidden", "value" => $editData["id"]]] : [],
         [
             ["name" => "tabla", "type" => "hidden", "value" => "admins"],
-            ["name" => "usuario", "label" => "Usuario", "required" => true, "value" => $editData["usuario"] ?? ""],
-            ["name" => "password", "label" => "Contraseña", "required" => !$editData, "value" => ""],
+            [
+                "name" => "usuario",
+                "label" => "Usuario",
+                "required" => true,
+                "value" => $editData["usuario"] ?? "",
+            ],
+            [
+                "name" => "password",
+                "label" => "Contraseña",
+                "required" => !$editData,
+                "value" => "",
+            ],
         ]
-    )
+    ),
 ]);
 
 renderQueryTable(
