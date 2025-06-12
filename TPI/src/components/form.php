@@ -3,7 +3,7 @@ include_once __DIR__ . "/input.php";
 function renderForm($formData)
 {
     ?>
-<div class="max-w-md mx-auto mt-8 bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+<div class="max-w-md mx-auto mt-6 mb-12 bg-white p-6 rounded-lg shadow-lg border border-gray-200">
     <?php if (!empty($formData["useAlerts"])) {
         include __DIR__ . "/alert.php";
     } ?>

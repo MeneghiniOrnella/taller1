@@ -32,7 +32,7 @@ function updateRow(
     $setParts = [];
 
     foreach ($data as $campo => $valor) {
-        if (!preg_match('/^[a-zA-Z0-9_]+$/', $campo)) {
+        if (!preg_match('/^[a-zA-Z0-9_@]+$/', $campo)) {
             $alert = ["type" => "error", "message" => "Campo inválido: $campo"];
             return;
         }
