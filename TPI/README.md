@@ -43,8 +43,8 @@ Esta información deberá estar guardada en la misma base de datos de la aplicac
 
 ## Link local
 
-- [http://localhost/taller1/TPI/index.php](http://localhost/taller1/TPI/index.php)
-- [http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi](http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi)
+- [Localhost](http://localhost/taller1/TPI/index.php)
+- [PhpMyAdmin-DB](http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi)
 
 ## Links útiles
 

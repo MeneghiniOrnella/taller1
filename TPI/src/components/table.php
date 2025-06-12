@@ -17,7 +17,7 @@
                         <td class='px-6 py-4 capitalize'><?= htmlspecialchars($row[$i]) ?></td>
                     <?php } ?>
                     <td class='px-6 py-4 text-center space-x-2'>
-                        <?php if ($table === 'carreras' && in_array($row[0], $bloqueados)): ?>
+                        <?php if ($table === "carreras" && in_array($row[0], $bloqueados)): ?>
                             <button type="button" class="bg-gray-400 text-white px-3 py-1 rounded cursor-not-allowed" title="No se puede borrar: tiene egresados asociados" disabled>
                                 Borrar
                             </button>
@@ -26,8 +26,12 @@
                             </button>
                         <?php else: ?>
                             <form action="" method="post" style="display:inline;" onsubmit="return confirm('¿Desea borrar este registro?');">
-                                <input type="hidden" name="tabla" value="<?= htmlspecialchars($table) ?>">
-                                <input type="hidden" name="delete_id" value="<?= htmlspecialchars($row[0]) ?>">
+                                <input type="hidden" name="tabla" value="<?= htmlspecialchars(
+                                    $table
+                                ) ?>">
+                                <input type="hidden" name="delete_id" value="<?= htmlspecialchars(
+                                    $row[0]
+                                ) ?>">
                                 <button type="submit" class="link bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
                                     Borrar
                                 </button>

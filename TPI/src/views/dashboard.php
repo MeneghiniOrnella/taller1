@@ -14,8 +14,20 @@ include_once __DIR__ . "/../components/header.php";
 include_once __DIR__ . "/../helpers/renderQueryTable.php";
 include_once __DIR__ . "/../components/footer.php";
 
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../views/login.php");
+    exit();
+}
+
+$usuario = $_SESSION["usuario"];
+$usuarioImg = "
+    <span class='usuarioImg'>
+        <img src='/taller1/TPI/public/assets/admin.png' alt='admin'>
+        $usuario
+    </span>";
+
 $navItems = [
-    "Inicio" => "/taller1/TPI/index.php",
+    $usuarioImg => "",
     "Cerrar sesión" => "/taller1/TPI/src/views/logout.php",
 ];
 

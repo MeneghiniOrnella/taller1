@@ -14,10 +14,10 @@ function renderQueryTable($conn, $query, $headers, $rowFormatter = null, $table)
     }
 
     $bloqueados = [];
-    if ($table === 'carreras') {
+    if ($table === "carreras") {
         $bloqRes = mysqli_query($conn, "SELECT DISTINCT carrera_id FROM egresados");
         while ($bloq = mysqli_fetch_assoc($bloqRes)) {
-            $bloqueados[] = $bloq['carrera_id'];
+            $bloqueados[] = $bloq["carrera_id"];
         }
     }
 
