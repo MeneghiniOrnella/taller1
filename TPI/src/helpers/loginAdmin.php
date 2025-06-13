@@ -7,7 +7,7 @@ function loginAdmin($conn, $usuario, $password)
     $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
-        if ($row["password"] === $password) {
+        if (password_verify($password, $row["password"])) {
             return $row;
         }
     }

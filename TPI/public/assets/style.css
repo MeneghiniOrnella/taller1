@@ -29,7 +29,6 @@ button,
     justify-content: space-between;
     align-items: flex-start;
 }
-
 .alert-box.success {
     color: #006400;
     background-color: #ccffcc;
