@@ -1,10 +1,12 @@
-<?php function renderHeader() { ?>
+<?php function renderHeader($navItems)
+{
+    ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $pageTitle ?? 'Administración de Egresados' ?></title>
+    <title><?= $pageTitle ?? "Administración de Egresados" ?></title>
     <link rel="icon" href="/taller1/TPI/public/assets/favicon.ico" type="image/x-icon">
     <link href="/taller1/TPI/public/assets/output.css" rel="stylesheet">
 </head>
@@ -13,23 +15,17 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="text-2xl font-semibold tracking-wide">
-                    Administración de Egresados
+                    <a href="/taller1/TPI/index.php">Administración de Egresados</a>
                 </div>
                 <div class="space-x-4 flex items-center">
-                    <?php if (!empty($navItems) && is_array($navItems)): ?>
-                        <?php foreach ($navItems as $label => $href): ?>
-                            <a href="<?= $href ?>" class="text-white hover:text-blue-100 font-medium transition duration-200">
-                                <?= $label ?>
-                            </a>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                    <?php if (isset($_SESSION['logged'])): ?>
-                        <a href="/views/auth/logout.php" class="bg-white text-blue-700 px-3 py-1 rounded hover:bg-blue-100 transition duration-200 text-sm font-semibold">
-                            Cerrar sesión
+                    <?php foreach ($navItems as $label => $href): ?>
+                        <a href="<?= $href ?>" class="link hover:bg-green-700">
+                            <?= $label ?>
                         </a>
-                    <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
     </nav>
-<?php } ?>
+<?php
+} ?>

@@ -1,4 +1,6 @@
-<?php function renderModal() { ?>
+<?php function renderModal()
+{
+    ?>
 <div class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -19,8 +21,9 @@
 <div class="">
     <button class="">x</button>
     <div class="">
-        <p class=""><?php $textModal ?></p>
+        <p class=""><?php $textModal; ?></p>
         <button class="">Confirmar</button>
     </div>
 </div>
-<?php } ?>
+<?php
+} ?>
