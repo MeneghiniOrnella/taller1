@@ -45,7 +45,7 @@ Colocar en consola el siguiente comando mientras esta ubicado en: /taller1/tpi.
 
 ## Ejecución
 
-Ingresar a XAMPP y correr Apache y MySQL.
+Ingresar a XAMPP donde se correra Apache y MySQL.
 Luego ingresar a los links que se encuentran en el apartado link local.
 
 ## Link local
@@ -53,8 +53,15 @@ Luego ingresar a los links que se encuentran en el apartado link local.
 - [Localhost](http://localhost/taller1/TPI/index.php)
 - [PhpMyAdmin-DB](http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi)
 
+## Tecnologías aplicadas
+
+- PHP
+- MySQL (PHPMyAdmin)
+- Node
+- TailwindCSS
+- Prettier
+
 ## Links útiles
 
 - [Intalación de TailwindCSS](https://tailwindcss.com/docs/installation/tailwind-cli)
-- [Ayuda para modelar componentes](https://preline.co/docs/alerts.html)
 - [Favicon elegido](https://icon-icons.com/es/icono/universidad/180696)
