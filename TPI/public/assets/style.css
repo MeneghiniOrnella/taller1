@@ -5,12 +5,18 @@ npx @tailwindcss/cli -i ./public/assets/style.css -o ./public/assets/output.css 
 https://tailwindcss.com/docs/installation/tailwind-cli
 */
 
-.links {
-    color: #25eb56; /* Tailwind's blue-600 */
+button,
+.link {
+    /*bg-blue-500hover:;
+    bg-blue-700text-whitefont-boldpy-2px-4rounded*/
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
     text-decoration: none;
+    cursor: pointer;
 }
 
-/* styles.css */
 .alert-box {
     padding: 1rem 1.5rem;
     border-radius: 8px;
@@ -29,13 +35,11 @@ https://tailwindcss.com/docs/installation/tailwind-cli
     background-color: #ccffcc;
     border: 1px solid #009900;
 }
-
 .alert-box.error {
     color: #8b0000;
     background-color: #ffcccc;
     border: 1px solid #cc0000;
 }
-
 .alert-close {
     margin-left: 1rem;
     font-size: 1.25rem;
@@ -46,4 +50,22 @@ https://tailwindcss.com/docs/installation/tailwind-cli
 }
 .alert-close:hover {
     color: #000;
+}
+
+.usuarioImg {
+    width: 12rem;
+    display: flex;
+    flex-direction: row;
+    text-transform: capitalize;
+}
+.usuarioImg img {
+    height: 1.5rem;
+    width: 2.5rem;
+    background-color: rgb(196, 245, 191);
+    margin-right: 0.7rem;
+    border-radius: 5rem;
+    -webkit-border-radius: 5rem;
+    -moz-border-radius: 5rem;
+    -ms-border-radius: 5rem;
+    -o-border-radius: 5rem;
 }

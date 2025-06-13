@@ -1,37 +1,58 @@
 [ ] usar libreria de js como AOS para animaciones
 [ ] hacer el word con toda la documentacion y el codigo
+
 # TPI: Administración de Egresados
+
 ## CRITERIOS DE EVALUACIÓN
+
 Aplicar los contenidos abordados en la asignatura Taller de Lenguajes I para desarrollar una aplicación web en PHP, segura y accesible.
+
 ## CONSIGNAS
+
 Se deberá realizar una Aplicación Web (programas PHP y Base de Datos) de acuerdo con los requerimientos establecidos.
+
 ### Aplicación: Administración de Egresados
+
 Una Universidad desea brindar una plataforma de registro para los egresados de sus distintas carreras. Para eso se deberá desarrollar la aplicación web con la siguiente funcionalidad.
+
 ### Página pública
+
 El navegante completa un formulario de registro como Egresado con los siguientes datos:
+
 - Nombre y Apellido
 - Carrera
 - Nro. de matrícula
 - Email
 - Teléfono
-✅❌
 
-Al cargar un formulario se deberá enviar un email con los datos del formulario a todas las direcciones de correo cargadas por el Administrador en el Panel. ✅❌
+Al cargar un formulario se deberá enviar un email con los datos del formulario a todas las direcciones de correo cargadas por el Administrador en el Panel.
 
-Además, deberá registrar una solicitud de alta de egresado. ❌
+Además, deberá registrar una solicitud de alta de egresado.
+
 ### Panel de Administración
-de acceso restringido, en donde un usuario Administrador tendrá acceso a tareas solamente permitidas para ese rol. ✅❌
-El acceso al panel se deberá validar con usuario y contraseña. ✅❌
+
+de acceso restringido, en donde un usuario Administrador tendrá acceso a tareas solamente permitidas para ese rol.
+El acceso al panel se deberá validar con usuario y contraseña.
 Esta información deberá estar guardada en la misma base de datos de la aplicación El Administrador deberá hacer las siguientes funciones:
+<<<<<<< HEAD
 - ABM de tabla de Carreras✅❌
 - ABM de tabla de emails para recibir alertas de nuevos Egresados✅❌
+=======
+
+- ABM de tabla de Carreras
+- ABM de tabla de emails para recibir alertas de nuevos Egresados
+>>>>>>> 59f8c15eacf699888ca9715918e9b23cd7ada9b5
 - Confirmar o rechazar solicitudes de egresados
-- Generar un listado con todos los egresados y sus datos de contacto ✅
-- Cambiar su contraseña.❌
+- Generar un listado con todos los egresados y sus datos de contacto
+- Cambiar su contraseña.
+
 ## Link local
-- [http://localhost/taller1/TPI/index.php](http://localhost/taller1/TPI/index.php)
-- [http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi](http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi)
+
+- [Localhost](http://localhost/taller1/TPI/index.php)
+- [PhpMyAdmin-DB](http://localhost/phpmyadmin/index.php?route=/database/structure&db=taller1-tpi)
+
 ## Links útiles
+
 - [Intalación de TailwindCSS](https://tailwindcss.com/docs/installation/tailwind-cli)
 - [Ayuda para modelar componentes](https://preline.co/docs/alerts.html)
 - [Favicon elegido](https://icon-icons.com/es/icono/universidad/180696)
