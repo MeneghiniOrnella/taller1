@@ -21,7 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password_confirmacion = $_POST["password_confirmacion"] ?? "";
 
     if ($password_nueva !== $password_confirmacion) {
-        $alert = ["type" => "error", "message" => "La nueva contraseña y su confirmación no coinciden."];
+        $alert = [
+            "type" => "error",
+            "message" => "La nueva contraseña y su confirmación no coinciden.",
+        ];
     } else {
         $query = "SELECT * FROM admins WHERE usuario = ?";
         $stmt = $conn->prepare($query);
@@ -39,7 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $update = $conn->prepare("UPDATE admins SET password = ? WHERE usuario = ?");
                 $update->bind_param("ss", $hash_nuevo, $usuario);
                 if ($update->execute()) {
-                    $alert = ["type" => "success", "message" => "Contraseña actualizada correctamente."];
+                    $alert = [
+                        "type" => "success",
+                        "message" => "Contraseña actualizada correctamente.",
+                    ];
                 } else {
                     $alert = ["type" => "error", "message" => "Error al actualizar la contraseña."];
                 }
@@ -51,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 renderHeader([
-    "Volver al panel" => "/taller1/TPI/src/views/dashboard.php"
+    "Volver al panel" => "/taller1/TPI/src/views/dashboard.php",
 ]);
 
 $formData = [
@@ -65,21 +71,21 @@ $formData = [
             "name" => "password_actual",
             "label" => "Contraseña actual",
             "type" => "password",
-            "required" => true
+            "required" => true,
         ],
         [
             "name" => "password_nueva",
             "label" => "Nueva contraseña",
             "type" => "password",
-            "required" => true
+            "required" => true,
         ],
         [
             "name" => "password_confirmacion",
             "label" => "Confirmar nueva contraseña",
             "type" => "password",
-            "required" => true
+            "required" => true,
         ],
-    ]
+    ],
 ];
 
 renderForm($formData);

@@ -121,8 +121,8 @@ try {
         $table = $_GET["tabla"] ?? null;
         if ($table === "egresados") {
             include __DIR__ . "/egresados.php";
-        // } elseif ($table === "admins") {
-        //     include __DIR__ . "/admins.php";
+            // } elseif ($table === "admins") {
+            //     include __DIR__ . "/admins.php";
         } elseif ($table === "carreras") {
             include __DIR__ . "/carreras.php";
         } elseif ($table === "emails_admin") {
