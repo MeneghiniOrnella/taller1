@@ -39,9 +39,12 @@ Esta información deberá estar guardada en la misma base de datos de la aplicac
 - Cambiar su contraseña.
 
 ## Instalación
-```npm install```
+
+Colocar en consola el siguiente comando mientras esta ubicado en: /taller1/tpi.
+`npm install`
 
 ## Ejecución
+
 Ingresar a XAMPP y correr Apache y MySQL.
 Luego ingresar a los links que se encuentran en el apartado link local.
 

@@ -88,10 +88,15 @@ try {
         "egresados" => "Egresados",
         "carreras" => "Carreras",
         "emails_admin" => "Emails de Notificación",
-        "admins" => "Cuentas de Administradores",
+        // "admins" => "Cuentas de Administradores",
     ];
     ?>
-
+<div class="text-right mb-4">
+    <a href="/taller1/TPI/src/auth/updatePassword.php"
+       class="block px-4 py-2 rounded bg-blue-700 text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-green-900 focus:ring-offset-2 transition">
+        Cambiar contraseña
+    </a>
+</div>
 <div class="flex">
     <aside class="w-64 h-screen sticky top-0 bg-green-50 p-4 shadow-lg border-r border-green-200">
         <h2 class="text-xl font-bold text-green-900 mb-4 text-center">Tablas disponibles:</h2>
@@ -116,8 +121,8 @@ try {
         $table = $_GET["tabla"] ?? null;
         if ($table === "egresados") {
             include __DIR__ . "/egresados.php";
-        } elseif ($table === "changePassword") {
-            include __DIR__ . "/changePassword.php";
+        // } elseif ($table === "admins") {
+        //     include __DIR__ . "/admins.php";
         } elseif ($table === "carreras") {
             include __DIR__ . "/carreras.php";
         } elseif ($table === "emails_admin") {

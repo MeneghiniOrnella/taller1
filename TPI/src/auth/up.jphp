@@ -1,0 +1,85 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../views/login.php");
+    exit();
+}
+
+require_once __DIR__ . "/../db/db.php";
+include_once __DIR__ . "/../components/header.php";
+include_once __DIR__ . "/../components/footer.php";
+include_once __DIR__ . "/../components/alert.php";
+
+$alert = null;
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $usuario = $_SESSION["usuario"];
+    $password_actual = $_POST["password_actual"] ?? "";
+    $password_nueva = $_POST["password_nueva"] ?? "";
+    $password_confirmacion = $_POST["password_confirmacion"] ?? "";
+
+    if ($password_nueva !== $password_confirmacion) {
+        $alert = ["type" => "error", "message" => "La nueva contraseña y su confirmación no coinciden."];
+    } else {
+        $query = "SELECT * FROM admins WHERE usuario = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $usuario);
+        $stmt->execute();
+        $res = $stmt->get_result();
+
+        if ($res && $res->num_rows === 1) {
+            $admin = $res->fetch_assoc();
+
+            if ($admin["password"] !== $password_actual) { // Si usas hash, cambia esto a password_verify
+                $alert = ["type" => "error", "message" => "La contraseña actual es incorrecta."];
+            } else {
+                $update = $conn->prepare("UPDATE admins SET password = ? WHERE usuario = ?");
+                $update->bind_param("ss", $password_nueva, $usuario);
+                if ($update->execute()) {
+                    $alert = ["type" => "success", "message" => "Contraseña actualizada correctamente."];
+                } else {
+                    $alert = ["type" => "error", "message" => "Error al actualizar la contraseña."];
+                }
+            }
+        } else {
+            $alert = ["type" => "error", "message" => "Usuario no encontrado."];
+        }
+    }
+}
+
+renderHeader([
+    "Volver al panel" => "/taller1/TPI/src/views/dashboard.php"
+]);
+?>
+
+<main class="p-6 max-w-md mx-auto">
+    <h2 class="text-2xl font-bold text-center mb-6">Cambiar contraseña</h2>
+
+    <?php if ($alert): ?>
+        <?php renderAlert($alert["type"], $alert["message"]); ?>
+    <?php endif; ?>
+
+    <form method="POST" class="space-y-4">
+        <div>
+            <label for="password_actual" class="block mb-1">Contraseña actual</label>
+            <input type="password" name="password_actual" id="password_actual" required class="w-full border p-2 rounded">
+        </div>
+
+        <div>
+            <label for="password_nueva" class="block mb-1">Nueva contraseña</label>
+            <input type="password" name="password_nueva" id="password_nueva" required class="w-full border p-2 rounded">
+        </div>
+
+        <div>
+            <label for="password_confirmacion" class="block mb-1">Confirmar nueva contraseña</label>
+            <input type="password" name="password_confirmacion" id="password_confirmacion" required class="w-full border p-2 rounded">
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+            Guardar nueva contraseña
+        </button>
+    </form>
+</main>
+
+<?php renderFooter(); ?>
