@@ -45,7 +45,7 @@ if (
 
 $navItems = [
     "Inicio" => "/taller1/TPI/index.php",
-    "Iniciar sesión" => "/taller1/TPI/src/views/login.php"
+    "Iniciar sesión" => "/taller1/TPI/src/views/login.php",
 ];
 renderHeader($navItems);
 ?>

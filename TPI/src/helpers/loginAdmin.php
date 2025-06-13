@@ -1,5 +1,6 @@
 <?php
-function loginAdmin($conn, $usuario, $password) {
+function loginAdmin($conn, $usuario, $password)
+{
     $stmt = $conn->prepare("SELECT * FROM admins WHERE usuario = ?");
     $stmt->bind_param("s", $usuario);
     $stmt->execute();

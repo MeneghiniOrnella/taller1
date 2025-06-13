@@ -46,11 +46,8 @@
             <?php } ?>
         </tbody>
     </table>
-    <form action="src/helpers/addRow.php" method="post" style="display:inline;" onsubmit="return confirm('¿Desea añadir un registro?');">
-        <input type="hidden" name="tabla" value="<?= htmlspecialchars($table) ?>">
-        <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
-            Añadir 1 fila al final
-        </button>
-    </form>
+    <!-- <a href="?tabla=<?= $table ?>&add_id=<?= $row[0] ?>" class="link bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+        Añadir
+    </a> -->
 <?php
 } ?>
