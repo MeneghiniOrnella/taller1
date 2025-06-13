@@ -1,22 +1,6 @@
 {
-    "dependencies": {
-        "@tailwindcss/cli": "^4.1.7",
-        "tailwindcss": "^4.1.7"
-    },
-    "devDependencies": {
-        "@prettier/plugin-php": "^0.22.4",
-        "prettier": "^3.5.3"
-    },
-    "prettier": {
-        "plugins": [
-            "@prettier/plugin-php"
-        ],
-        "tabWidth": 4,
-        "printWidth": 100
-    },
-    "scripts": {
-        "build:css": "npx @tailwindcss/cli -i ./public/assets/style.css -o ./public/assets/output.css --watch",
-        "format": "prettier --write .",
-        "format:check": "prettier --check ."
-    }
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "tailwindcss": "^4.1.7"
+  }
 }
