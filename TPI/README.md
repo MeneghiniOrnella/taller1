@@ -38,6 +38,13 @@ Esta información deberá estar guardada en la misma base de datos de la aplicac
 - Generar un listado con todos los egresados y sus datos de contacto
 - Cambiar su contraseña.
 
+## Instalación
+```npm install```
+
+## Ejecución
+Ingresar a XAMPP y correr Apache y MySQL.
+Luego ingresar a los links que se encuentran en el apartado link local.
+
 ## Link local
 
 - [Localhost](http://localhost/taller1/TPI/index.php)
